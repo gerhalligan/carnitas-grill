@@ -54,14 +54,14 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
               variant="outline" 
               className="flex-1 border-carnitas-primary text-carnitas-primary hover:bg-carnitas-primary hover:text-white"
             >
-              Customize
+              Personalizar
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>Customize Your {name}</DialogTitle>
+              <DialogTitle>Personaliza tu {name}</DialogTitle>
               <DialogDescription>
-                Make it your own! Choose your toppings and extras.
+                ¡Hazlo a tu gusto! Elige tus ingredientes extras.
               </DialogDescription>
             </DialogHeader>
             {/* Customization options will be added here */}
@@ -70,11 +70,10 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
         <Button 
           className="flex-1 bg-carnitas-primary hover:bg-carnitas-secondary"
           onClick={() => {
-            // Add to cart functionality will be implemented here
             console.log(`Added ${name} to cart`);
           }}
         >
-          Add to Cart
+          Agregar
         </Button>
       </CardFooter>
     </Card>
