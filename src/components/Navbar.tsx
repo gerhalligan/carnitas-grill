@@ -12,7 +12,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <img 
-                src="/lovable-uploads/9a0ec54d-860d-4799-9591-a0a3e6bc660f.png" 
+                src="/lovable-uploads/0f38bd79-49bc-4af0-822e-8bb1f010f946.png" 
                 alt="Carnitas Mexican Fresh Grill" 
                 className="h-12 w-auto"
               />
