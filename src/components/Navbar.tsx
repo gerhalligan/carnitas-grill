@@ -10,8 +10,12 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold text-carnitas-primary">
-              Carnitas
+            <a href="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/9a0ec54d-860d-4799-9591-a0a3e6bc660f.png" 
+                alt="Carnitas Mexican Fresh Grill" 
+                className="h-12 w-auto"
+              />
             </a>
           </div>
 
