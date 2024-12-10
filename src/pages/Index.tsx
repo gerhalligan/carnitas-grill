@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import FeaturedMenu from "@/components/FeaturedMenu";
+import MenuSection from "@/components/MenuSection";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 
@@ -9,7 +9,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <FeaturedMenu />
+      <MenuSection />
       <About />
       <Footer />
     </div>

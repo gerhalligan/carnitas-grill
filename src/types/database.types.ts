@@ -70,3 +70,5 @@ export interface UserProfile {
   dietary_preferences?: string[];
   created_at: string;
 }
+
+export type MenuCategory = "Tacos" | "Bowls" | "Burritos" | "Sides" | "Drinks";
