@@ -1,13 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { toast } from "sonner";
-
-export interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  category: string;
-}
+import { CartItem, MenuCategory } from "@/types/database.types";
 
 interface CartContextType {
   items: CartItem[];
