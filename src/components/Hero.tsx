@@ -6,14 +6,14 @@ const Hero = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      {/* Background Image - authentic Mexican food */}
+      {/* Background Image - fajitas and tacos */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/src/images/mexican-dish-fajitas-tacos-from-above-web.jpg?auto=format&fit=crop&q=80')",
+          backgroundImage: "url('/lovable-uploads/b12de133-08f4-4567-83de-a8cd0c48552b.png')",
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
       </div>
 
       {/* Content */}
