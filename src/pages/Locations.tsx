@@ -22,8 +22,8 @@ const Locations = () => {
                   <div>
                     <p className="font-medium">Address</p>
                     <p className="text-gray-600">
-                      123 Hayes Valley Street<br />
-                      San Francisco, CA 94102
+                      Main Street<br />
+                      Swords, Co. Dublin
                     </p>
                   </div>
                 </div>
@@ -41,9 +41,9 @@ const Locations = () => {
                   <div>
                     <p className="font-medium">Hours</p>
                     <div className="text-gray-600">
-                      <p>Monday - Thursday: 11:00 AM - 9:00 PM</p>
-                      <p>Friday - Saturday: 11:00 AM - 10:00 PM</p>
-                      <p>Sunday: 12:00 PM - 8:00 PM</p>
+                      <p>Monday - Thursday: 5:00 PM - 11:00 PM</p>
+                      <p>Friday - Saturday: 5:00 PM - 12:00 PM</p>
+                      <p>Sunday: 5:00 PM - 11:00 PM</p>
                     </div>
                   </div>
                 </div>
@@ -53,8 +53,8 @@ const Locations = () => {
             <Card className="p-6">
               <h2 className="text-2xl font-semibold text-carnitas-text mb-4">Additional Information</h2>
               <p className="text-gray-600">
-                We offer both dine-in and takeout services. For large orders or catering inquiries, 
-                please call us at least 24 hours in advance. We're located in the heart of Hayes Valley, 
+                We offer takeout services. For large orders or catering inquiries, 
+                please call us at least 24 hours in advance. We're located in the heart of Swords, 
                 with street parking available and public transportation nearby.
               </p>
             </Card>
@@ -65,8 +65,8 @@ const Locations = () => {
             <Card className="p-6">
               <h2 className="text-2xl font-semibold text-carnitas-text mb-4">Parking & Transportation</h2>
               <p className="text-gray-600">
-                Street parking is available on Hayes Street and surrounding areas. We're also accessible 
-                via MUNI lines 21 and 7, and we're a 10-minute walk from the Civic Center BART station.
+                Street parking is available onSwords Main Street and surrounding areas. We're also accessible 
+                via numerous bus lines.
               </p>
             </Card>
           </div>

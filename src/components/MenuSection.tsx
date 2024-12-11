@@ -78,7 +78,7 @@ const MenuSection = () => {
         </h2>
         
         <Tabs defaultValue="Tacos" className="w-full">
-          <TabsList className="w-full justify-start mb-8 overflow-x-auto">
+          <TabsList className="w-full justify-start mb-8">
             {categories.map((category) => (
               <TabsTrigger
                 key={category}
