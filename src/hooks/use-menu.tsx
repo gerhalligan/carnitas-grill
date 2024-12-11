@@ -45,7 +45,7 @@ export function useMenu() {
   });
 
   const updateMenuItem = useMutation({
-    mutationFn: async ({ id, ...updateData }: Required<MenuItemFormData>) => {
+    mutationFn: async ({ id, ...updateData }: MenuItemFormData & { id: string }) => {
       const { data, error } = await supabase
         .from("menu_items")
         .update(updateData)
