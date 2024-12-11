@@ -2,9 +2,11 @@ import { Menu, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Cart } from "./Cart";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50">
@@ -39,7 +41,10 @@ const Navbar = () => {
               <User className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer" />
               <Cart />
             </div>
-            <Button className="bg-carnitas-primary hover:bg-carnitas-secondary text-white">
+            <Button 
+              className="bg-carnitas-primary hover:bg-carnitas-secondary text-white"
+              onClick={() => navigate('/menu')}
+            >
               Order Now
             </Button>
           </div>
@@ -77,7 +82,10 @@ const Navbar = () => {
                 <User className="w-5 h-5 text-carnitas-text" />
                 <Cart />
               </div>
-              <Button className="bg-carnitas-primary hover:bg-carnitas-secondary text-white w-full">
+              <Button 
+                className="bg-carnitas-primary hover:bg-carnitas-secondary text-white w-full"
+                onClick={() => navigate('/menu')}
+              >
                 Order Now
               </Button>
             </div>

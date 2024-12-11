@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="relative min-h-screen flex items-center justify-center">
       {/* Background Image - authentic Mexican food */}
@@ -26,6 +29,7 @@ const Hero = () => {
         <Button
           size="lg"
           className="bg-carnitas-primary hover:bg-carnitas-secondary text-white text-lg px-8 py-6 animate-fadeIn"
+          onClick={() => navigate('/menu')}
         >
           Order Now
         </Button>
