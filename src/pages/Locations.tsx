@@ -8,7 +8,7 @@ const Locations = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <div className="container mx-auto px-4 mt-24">
+      <div className="container mx-auto px-4 mt-32">
         <h1 className="text-4xl font-bold text-carnitas-text mb-8">Our Location</h1>
         
         <div className="grid md:grid-cols-2 gap-8">
