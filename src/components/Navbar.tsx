@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50">
-      <SearchCommand />
+      <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -85,7 +85,7 @@ const Navbar = () => {
               </a>
               <div className="flex items-center space-x-4">
                 <Search 
-                  className="w-5 h-5 text-carnitas-text" 
+                  className="w-5 h-5 text-carnitas-text cursor-pointer" 
                   onClick={() => setIsSearchOpen(true)}
                 />
                 <User className="w-5 h-5 text-carnitas-text" />

@@ -74,23 +74,27 @@ const menuItems = {
 
 const allItems = Object.values(menuItems).flat();
 
-export function SearchCommand() {
-  const [open, setOpen] = useState(false);
+interface SearchCommandProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
   const navigate = useNavigate();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        onOpenChange?.(!open);
       }
     };
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [open, onOpenChange]);
 
   const handleSelect = (item: MenuItem) => {
-    setOpen(false);
+    onOpenChange?.(false);
     navigate("/menu");
     // Scroll to the item's category section
     const element = document.getElementById(item.category);
@@ -98,7 +102,7 @@ export function SearchCommand() {
   };
 
   return (
-    <CommandDialog open={open} onOpenChange={setOpen}>
+    <CommandDialog open={open} onOpenChange={onOpenChange}>
       <CommandInput placeholder="Search menu items..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
