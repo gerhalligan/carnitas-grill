@@ -18,6 +18,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
 import { MenuCategory } from "@/types/database.types";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
@@ -39,8 +40,8 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
   const [isCustomizing, setIsCustomizing] = useState(false);
   const { addItem } = useCart();
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+  const [notes, setNotes] = useState("");
 
-  // This would ideally come from your database, but for now we'll hardcode some ingredients
   const getDefaultIngredients = (category: MenuCategory, itemName: string): Ingredient[] => {
     if (category === "Tacos") {
       return [
@@ -52,7 +53,6 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
         { id: "salsa", name: "Salsa Verde" },
       ];
     }
-    // Add more categories as needed
     return [];
   };
 
@@ -71,15 +71,16 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
       .filter(ing => !selectedIngredients.includes(ing.id))
       .map(ing => ing.name);
 
-    const customizations = removedIngredients.length > 0
-      ? { removedIngredients }
-      : undefined;
+    const customizations = {
+      ...(removedIngredients.length > 0 && { removedIngredients }),
+      ...(notes && { notes })
+    };
 
     addItem({ 
       name, 
       price, 
       category,
-      customizations 
+      customizations: Object.keys(customizations).length > 0 ? customizations : undefined
     });
 
     if (removedIngredients.length > 0) {
@@ -87,6 +88,8 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
     } else {
       toast.success(`Added ${name} to cart`);
     }
+
+    setNotes("");
   };
 
   const handleCustomizationComplete = () => {
@@ -145,6 +148,21 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
                   </label>
                 </div>
               ))}
+              <div className="space-y-2">
+                <label
+                  htmlFor="notes"
+                  className="text-sm font-medium leading-none"
+                >
+                  Special Instructions
+                </label>
+                <Textarea
+                  id="notes"
+                  placeholder="Add any special instructions here..."
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  className="resize-none"
+                />
+              </div>
             </div>
             <DialogFooter>
               <Button onClick={handleCustomizationComplete}>

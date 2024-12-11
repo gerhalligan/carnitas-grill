@@ -71,4 +71,16 @@ export interface UserProfile {
   created_at: string;
 }
 
+export interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  category: MenuCategory;
+  customizations?: {
+    removedIngredients?: string[];
+    notes?: string;
+  };
+}
+
 export type MenuCategory = "Tacos" | "Bowls" | "Burritos" | "Sides" | "Drinks";
