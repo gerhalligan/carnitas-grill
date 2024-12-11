@@ -14,13 +14,13 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full bg-white shadow-md z-50">
       <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <img 
                 src="/lovable-uploads/0f38bd79-49bc-4af0-822e-8bb1f010f946.png" 
                 alt="Carnitas Mexican Fresh Grill" 
-                className="h-16 w-auto"
+                className="h-20 w-auto" // Increased from h-16 to h-20
               />
             </a>
           </div>
