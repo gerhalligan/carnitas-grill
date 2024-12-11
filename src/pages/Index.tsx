@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow pt-32"> {/* Increased from pt-24 to pt-32 */}
+      <main className="flex-grow mt-32"> {/* Changed from pt-32 to mt-32 */}
         <Hero />
         <MenuSection />
         <About />

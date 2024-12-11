@@ -20,7 +20,7 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/0f38bd79-49bc-4af0-822e-8bb1f010f946.png" 
                 alt="Carnitas Mexican Fresh Grill" 
-                className="h-20 w-auto" // Increased from h-16 to h-20
+                className="h-20 w-auto"
               />
             </a>
           </div>
