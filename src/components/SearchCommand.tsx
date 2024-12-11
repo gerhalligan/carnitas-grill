@@ -140,25 +140,25 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
                   <div>
                     <p className="font-medium">{item.name}</p>
                     <p className="text-sm text-muted-foreground">{item.description}</p>
+                    <div className="flex gap-2 mt-2">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={(e) => handleSelect(item)}
+                        className="text-carnitas-primary border-carnitas-primary hover:bg-carnitas-primary hover:text-white"
+                      >
+                        View Item
+                      </Button>
+                      <Button 
+                        size="sm"
+                        onClick={(e) => handleAddToCart(item, e)}
+                        className="bg-carnitas-primary hover:bg-carnitas-secondary"
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
                   </div>
                   <span className="text-carnitas-primary font-bold">€{item.price}</span>
-                </div>
-                <div className="flex gap-2 mt-2">
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    onClick={(e) => handleSelect(item)}
-                    className="text-carnitas-primary border-carnitas-primary hover:bg-carnitas-primary hover:text-white"
-                  >
-                    View Item
-                  </Button>
-                  <Button 
-                    size="sm"
-                    onClick={(e) => handleAddToCart(item, e)}
-                    className="bg-carnitas-primary hover:bg-carnitas-secondary"
-                  >
-                    Add to Cart
-                  </Button>
                 </div>
               </div>
             </CommandItem>
