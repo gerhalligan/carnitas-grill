@@ -25,11 +25,11 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         carnitas: {
-          primary: "#E67E22",
-          secondary: "#C0392B",
-          accent: "#F39C12",
-          text: "#2C3E50",
-          light: "#F5F5F5",
+          primary: "#D35400", // Deeper orange
+          secondary: "#C0392B", // Rich red
+          accent: "#E67E22", // Bright orange
+          text: "#2C3E50", // Deep blue-gray
+          light: "#FDF2E9", // Light orange tint
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
