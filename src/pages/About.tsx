@@ -22,8 +22,8 @@ const About = () => {
           </div>
           <div className="relative h-[400px]">
             <img
-              src="/src/images/food-dish-a-burrito-on-a-wooden-cutting-board.jpg?auto=format&fit=crop&q=80"
-              alt="Chef preparing carnitas"
+              src="/lovable-uploads/d9f2d4a7-5914-4e36-8494-181ec54f4a89.png"
+              alt="Delicious carnitas burrito with fresh vegetables"
               className="w-full h-full object-cover rounded-lg shadow-lg"
             />
           </div>
@@ -77,6 +77,5 @@ const About = () => {
     </div>
   );
 };
-
 
 export default About;
