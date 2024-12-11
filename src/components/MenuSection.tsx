@@ -20,19 +20,19 @@ const MenuSection = () => {
       {
         name: "Classic Carnitas Tacos",
         description: "Tender braised pork with cilantro, onions, and lime",
-        price: 12.99,
+        price: 11.99,
         image: "https://images.unsplash.com/photo-1624300629298-e9de39c13be5?auto=format&fit=crop&q=80"
       },
       {
         name: "Al Pastor Tacos",
         description: "Marinated pork with pineapple, onions, and cilantro",
-        price: 13.99,
+        price: 12.99,
         image: "https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&q=80"
       },
       {
         name: "Fish Tacos",
         description: "Battered fish with cabbage slaw and chipotle crema",
-        price: 14.99,
+        price: 13.99,
         image: "https://images.unsplash.com/photo-1611250188496-e966043a0629?auto=format&fit=crop&q=80"
       }
     ],
@@ -40,7 +40,7 @@ const MenuSection = () => {
       {
         name: "Carnitas Bowl",
         description: "Rice, beans, carnitas, pico de gallo, and guacamole",
-        price: 15.99,
+        price: 14.99,
         image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&q=80"
       }
     ],
@@ -48,7 +48,7 @@ const MenuSection = () => {
       {
         name: "Carnitas Burrito",
         description: "Large flour tortilla filled with carnitas, rice, beans, and salsa",
-        price: 13.99,
+        price: 12.99,
         image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80"
       }
     ],
@@ -56,7 +56,7 @@ const MenuSection = () => {
       {
         name: "Fresh Guacamole",
         description: "Fresh avocado dip with tomatoes, onions, and cilantro",
-        price: 6.99,
+        price: 5.99,
         image: "https://images.unsplash.com/photo-1615213612138-4d1195b1c0e9?auto=format&fit=crop&q=80"
       }
     ],

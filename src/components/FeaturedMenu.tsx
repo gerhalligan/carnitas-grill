@@ -12,19 +12,19 @@ const menuItems = [
   {
     title: "Classic Carnitas Tacos",
     description: "Tender pulled pork with cilantro, onions, and lime",
-    price: "$12.99",
+    price: "€11.99",
     image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&q=80",
   },
   {
     title: "Carnitas Bowl",
     description: "Rice, beans, carnitas, and all your favorite toppings",
-    price: "$14.99",
+    price: "€13.99",
     image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&q=80",
   },
   {
     title: "Family Feast",
     description: "Feeds 4-6: 2lbs carnitas, tortillas, sides, and salsas",
-    price: "$49.99",
+    price: "€45.99",
     image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&q=80",
   },
 ];

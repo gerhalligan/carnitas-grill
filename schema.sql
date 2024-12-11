@@ -75,3 +75,24 @@ CREATE POLICY "User profiles can be created by authenticated users" ON user_prof
 
 CREATE POLICY "User profiles can be updated by the user who owns them" ON user_profiles
   FOR UPDATE USING (auth.uid() = user_id);
+
+-- Insert default location
+INSERT INTO locations (name, address, city, state, zip, phone, hours, coordinates)
+VALUES (
+  'Carnitas Swords',
+  'Main Street',
+  'Swords',
+  'Dublin',
+  'K67 X4K2',
+  '+353 1 234 5678',
+  '{
+    "monday": "11:00 - 22:00",
+    "tuesday": "11:00 - 22:00",
+    "wednesday": "11:00 - 22:00",
+    "thursday": "11:00 - 22:00",
+    "friday": "11:00 - 23:00",
+    "saturday": "11:00 - 23:00",
+    "sunday": "12:00 - 22:00"
+  }',
+  '{"latitude": 53.4597, "longitude": -6.2181}'
+);

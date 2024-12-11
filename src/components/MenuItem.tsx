@@ -50,7 +50,7 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
       </CardHeader>
       <CardContent>
         <p className="text-2xl font-bold text-carnitas-primary">
-          ${price.toFixed(2)}
+          €{price.toFixed(2)}
         </p>
       </CardContent>
       <CardFooter className="flex gap-2">
