@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import Locations from "./pages/Locations";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/locations" element={<Locations />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
