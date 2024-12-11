@@ -7,7 +7,7 @@ const About = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <div className="container mx-auto px-4 pt-24 pb-16">
+      <div className="container mx-auto px-4 mt-24">
         <h1 className="text-4xl font-bold text-carnitas-text mb-8">About Carnitas</h1>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
