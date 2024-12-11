@@ -118,7 +118,7 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
   };
 
   return (
-    <CommandDialog open={open} onOpenChange={onOpenChange}>
+    <CommandDialog open={open} onOpenChange={onOpenChange} className="max-w-3xl">
       <CommandInput placeholder="Search menu items..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
