@@ -9,7 +9,149 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      locations: {
+        Row: {
+          address: string
+          city: string
+          coordinates: Json
+          hours: Json
+          id: string
+          name: string
+          phone: string
+          state: string
+          zip: string
+        }
+        Insert: {
+          address: string
+          city: string
+          coordinates: Json
+          hours: Json
+          id?: string
+          name: string
+          phone: string
+          state: string
+          zip: string
+        }
+        Update: {
+          address?: string
+          city?: string
+          coordinates?: Json
+          hours?: Json
+          id?: string
+          name?: string
+          phone?: string
+          state?: string
+          zip?: string
+        }
+        Relationships: []
+      }
+      menu_items: {
+        Row: {
+          available: boolean | null
+          category: string
+          created_at: string | null
+          customization_options: Json | null
+          description: string | null
+          id: string
+          image_url: string | null
+          name: string
+          price: number
+        }
+        Insert: {
+          available?: boolean | null
+          category: string
+          created_at?: string | null
+          customization_options?: Json | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          price: number
+        }
+        Update: {
+          available?: boolean | null
+          category?: string
+          created_at?: string | null
+          customization_options?: Json | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          price?: number
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string | null
+          id: string
+          items: Json
+          pickup_time: string | null
+          status: string
+          total: number
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          items: Json
+          pickup_time?: string | null
+          status?: string
+          total: number
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          items?: Json
+          pickup_time?: string | null
+          status?: string
+          total?: number
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      user_profiles: {
+        Row: {
+          created_at: string | null
+          dietary_preferences: string[] | null
+          favorite_location_id: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+          phone: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          dietary_preferences?: string[] | null
+          favorite_location_id?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          dietary_preferences?: string[] | null
+          favorite_location_id?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_profiles_favorite_location_id_fkey"
+            columns: ["favorite_location_id"]
+            isOneToOne: false
+            referencedRelation: "locations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
