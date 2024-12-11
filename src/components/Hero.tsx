@@ -16,9 +16,9 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fadeIn">
-          Auténticas Carnitas
+          Authentic Carnitas
           <br />
-          Hechas con Tradición
+          Made with Tradition
         </h1>
         <p className="text-xl text-white mb-8 animate-fadeIn">
           Savor our slow-cooked pork carnitas, handmade tortillas, and fresh salsas
@@ -27,7 +27,7 @@ const Hero = () => {
           size="lg"
           className="bg-carnitas-primary hover:bg-carnitas-secondary text-white text-lg px-8 py-6 animate-fadeIn"
         >
-          Ordena Ahora
+          Order Now
         </Button>
       </div>
     </div>
