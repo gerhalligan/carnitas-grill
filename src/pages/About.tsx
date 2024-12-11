@@ -22,7 +22,7 @@ const About = () => {
           </div>
           <div className="relative h-[400px]">
             <img
-              src="https://images.unsplash.com/photo-1514852451047-f8e1d6c8e99a?auto=format&fit=crop&q=80"
+              src="/src/images/food-dish-a-burrito-on-a-wooden-cutting-board.jpg?auto=format&fit=crop&q=80"
               alt="Chef preparing carnitas"
               className="w-full h-full object-cover rounded-lg shadow-lg"
             />
