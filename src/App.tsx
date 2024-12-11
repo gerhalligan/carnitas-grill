@@ -17,16 +17,18 @@ const App = () => (
     <AuthProvider>
       <CartProvider>
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/locations" element={<Locations />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </BrowserRouter>
+          <div className="min-h-screen">
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/locations" element={<Locations />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </BrowserRouter>
+          </div>
         </TooltipProvider>
       </CartProvider>
     </AuthProvider>
