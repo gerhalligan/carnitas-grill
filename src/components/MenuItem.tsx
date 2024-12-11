@@ -17,6 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { MenuCategory } from "@/types/database.types";
+import { useCart } from "@/contexts/CartContext";
 
 interface MenuItemProps {
   name: string;
@@ -28,6 +29,11 @@ interface MenuItemProps {
 
 const MenuItem = ({ name, description, price, image, category }: MenuItemProps) => {
   const [isCustomizing, setIsCustomizing] = useState(false);
+  const { addItem } = useCart();
+
+  const handleAddToCart = () => {
+    addItem({ name, price, category });
+  };
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -69,11 +75,9 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
         </Dialog>
         <Button 
           className="flex-1 bg-carnitas-primary hover:bg-carnitas-secondary"
-          onClick={() => {
-            console.log(`Added ${name} to cart`);
-          }}
+          onClick={handleAddToCart}
         >
-          Add
+          Add to Cart
         </Button>
       </CardFooter>
     </Card>

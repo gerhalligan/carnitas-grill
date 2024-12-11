@@ -1,6 +1,7 @@
-import { Menu, Search, ShoppingCart, User } from "lucide-react";
+import { Menu, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Cart } from "./Cart";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +37,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-4">
               <Search className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer" />
               <User className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer" />
-              <ShoppingCart className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer" />
+              <Cart />
             </div>
             <Button className="bg-carnitas-primary hover:bg-carnitas-secondary text-white">
               Order Now
@@ -74,7 +75,7 @@ const Navbar = () => {
               <div className="flex items-center space-x-4">
                 <Search className="w-5 h-5 text-carnitas-text" />
                 <User className="w-5 h-5 text-carnitas-text" />
-                <ShoppingCart className="w-5 h-5 text-carnitas-text" />
+                <Cart />
               </div>
               <Button className="bg-carnitas-primary hover:bg-carnitas-secondary text-white w-full">
                 Order Now
