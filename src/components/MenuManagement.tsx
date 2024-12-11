@@ -29,9 +29,10 @@ export function MenuManagement() {
       category: formData.get("category") as string,
       image_url: formData.get("image_url") as string,
       available: true,
+      customization_options: null,
     };
 
-    if (editingItem) {
+    if (editingItem?.id) {
       await updateMenuItem.mutateAsync({ ...itemData, id: editingItem.id });
     } else {
       await createMenuItem.mutateAsync(itemData);
@@ -41,7 +42,7 @@ export function MenuManagement() {
     setEditingItem(null);
   };
 
-  const handleEdit = (item: MenuItemFormData) => {
+  const handleEdit = (item: MenuItemFormData & { id: string }) => {
     setEditingItem(item);
     setIsDialogOpen(true);
   };
@@ -87,7 +88,7 @@ export function MenuManagement() {
                 <Textarea
                   id="description"
                   name="description"
-                  defaultValue={editingItem?.description}
+                  defaultValue={editingItem?.description || ""}
                 />
               </div>
               <div>
@@ -115,7 +116,7 @@ export function MenuManagement() {
                 <Input
                   id="image_url"
                   name="image_url"
-                  defaultValue={editingItem?.image_url}
+                  defaultValue={editingItem?.image_url || ""}
                 />
               </div>
               <Button type="submit" className="w-full">
