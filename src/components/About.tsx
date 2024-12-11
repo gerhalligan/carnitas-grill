@@ -16,8 +16,8 @@ const About = () => {
           </div>
           <div className="relative h-[400px]">
             <img
-              src="https://images.unsplash.com/photo-1514852451047-f8e1d6c8e99a?auto=format&fit=crop&q=80"
-              alt="Chef preparing carnitas"
+              src="https://images.unsplash.com/photo-1582562124811-c09040d0a901"
+              alt="Our traditional cooking process"
               className="w-full h-full object-cover rounded-lg shadow-lg"
             />
           </div>
