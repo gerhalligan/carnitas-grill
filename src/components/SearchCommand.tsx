@@ -7,14 +7,17 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { MenuCategory } from "@/types/database.types";
+import { Button } from "./ui/button";
+import { useCart } from "@/contexts/CartContext";
 
 interface MenuItem {
   name: string;
   description: string;
   price: number;
   category: MenuCategory;
+  image: string;
 }
 
 const menuItems = {
@@ -24,18 +27,21 @@ const menuItems = {
       description: "Tender braised pork with cilantro, onions, and lime",
       price: 11.99,
       category: "Tacos" as MenuCategory,
+      image: "https://images.unsplash.com/photo-1624300629298-e9de39c13be5?auto=format&fit=crop&q=80"
     },
     {
       name: "Al Pastor Tacos",
       description: "Marinated pork with pineapple, onions, and cilantro",
       price: 12.99,
       category: "Tacos" as MenuCategory,
+      image: "https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&q=80"
     },
     {
       name: "Fish Tacos",
       description: "Battered fish with cabbage slaw and chipotle crema",
       price: 13.99,
       category: "Tacos" as MenuCategory,
+      image: "https://images.unsplash.com/photo-1611250188496-e966043a0629?auto=format&fit=crop&q=80"
     },
   ],
   Bowls: [
@@ -44,6 +50,7 @@ const menuItems = {
       description: "Rice, beans, carnitas, pico de gallo, and guacamole",
       price: 14.99,
       category: "Bowls" as MenuCategory,
+      image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&q=80"
     },
   ],
   Burritos: [
@@ -52,6 +59,7 @@ const menuItems = {
       description: "Large flour tortilla filled with carnitas, rice, beans, and salsa",
       price: 12.99,
       category: "Burritos" as MenuCategory,
+      image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80"
     },
   ],
   Sides: [
@@ -60,6 +68,7 @@ const menuItems = {
       description: "Fresh avocado dip with tomatoes, onions, and cilantro",
       price: 5.99,
       category: "Sides" as MenuCategory,
+      image: "https://images.unsplash.com/photo-1615213612138-4d1195b1c0e9?auto=format&fit=crop&q=80"
     },
   ],
   Drinks: [
@@ -68,6 +77,7 @@ const menuItems = {
       description: "Traditional Mexican rice drink with cinnamon",
       price: 3.99,
       category: "Drinks" as MenuCategory,
+      image: "https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&q=80"
     },
   ],
 };
@@ -81,6 +91,7 @@ interface SearchCommandProps {
 
 export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
   const navigate = useNavigate();
+  const { addItem } = useCart();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -101,6 +112,11 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleAddToCart = (item: MenuItem, e: React.MouseEvent) => {
+    e.stopPropagation();
+    addItem({ name: item.name, price: item.price, category: item.category });
+  };
+
   return (
     <CommandDialog open={open} onOpenChange={onOpenChange}>
       <CommandInput placeholder="Search menu items..." />
@@ -112,10 +128,38 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
               key={item.name}
               value={item.name}
               onSelect={() => handleSelect(item)}
+              className="flex items-center space-x-4 p-2"
             >
-              <div className="flex justify-between w-full">
-                <span>{item.name}</span>
-                <span className="text-muted-foreground">€{item.price}</span>
+              <img 
+                src={item.image} 
+                alt={item.name} 
+                className="w-16 h-16 object-cover rounded-md"
+              />
+              <div className="flex-1">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <p className="font-medium">{item.name}</p>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </div>
+                  <span className="text-carnitas-primary font-bold">€{item.price}</span>
+                </div>
+                <div className="flex gap-2 mt-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={(e) => handleSelect(item)}
+                    className="text-carnitas-primary border-carnitas-primary hover:bg-carnitas-primary hover:text-white"
+                  >
+                    View Item
+                  </Button>
+                  <Button 
+                    size="sm"
+                    onClick={(e) => handleAddToCart(item, e)}
+                    className="bg-carnitas-primary hover:bg-carnitas-secondary"
+                  >
+                    Add to Cart
+                  </Button>
+                </div>
               </div>
             </CommandItem>
           ))}
