@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import MenuSection from "@/components/MenuSection";
+import { MenuManagement } from "@/components/MenuManagement";
 
 const Menu = () => {
   return (
@@ -7,6 +8,7 @@ const Menu = () => {
       <Navbar />
       <div className="pt-16">
         <MenuSection />
+        <MenuManagement />
       </div>
     </div>
   );
