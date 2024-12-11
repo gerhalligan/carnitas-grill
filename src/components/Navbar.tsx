@@ -3,13 +3,16 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Cart } from "./Cart";
 import { useNavigate } from "react-router-dom";
+import { SearchCommand } from "./SearchCommand";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50">
+      <SearchCommand />
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -37,7 +40,10 @@ const Navbar = () => {
               About
             </a>
             <div className="flex items-center space-x-4">
-              <Search className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer" />
+              <Search 
+                className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer" 
+                onClick={() => setIsSearchOpen(true)}
+              />
               <User className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer" />
               <Cart />
             </div>
@@ -78,7 +84,10 @@ const Navbar = () => {
                 About
               </a>
               <div className="flex items-center space-x-4">
-                <Search className="w-5 h-5 text-carnitas-text" />
+                <Search 
+                  className="w-5 h-5 text-carnitas-text" 
+                  onClick={() => setIsSearchOpen(true)}
+                />
                 <User className="w-5 h-5 text-carnitas-text" />
                 <Cart />
               </div>
