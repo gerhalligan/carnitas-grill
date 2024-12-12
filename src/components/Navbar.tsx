@@ -18,7 +18,7 @@ const Navbar = () => {
     }`}>
       <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
       <div className="container mx-auto px-4 relative">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-32">
           <Logo />
           <DesktopNav onSearchClick={() => setIsSearchOpen(true)} />
           
