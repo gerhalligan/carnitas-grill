@@ -30,17 +30,17 @@ const NavActions: FC<NavActionsProps> = ({ onSearchClick, className = "" }) => {
   return (
     <div className={`flex items-center gap-4 ${className}`}>
       <Search 
-        className="w-6 h-6 text-carnitas-text hover:text-carnitas-primary cursor-pointer" 
+        className="w-6 h-6 text-white hover:text-carnitas-light cursor-pointer" 
         onClick={onSearchClick}
       />
       {user ? (
         <LogOut
-          className="w-6 h-6 text-carnitas-text hover:text-carnitas-primary cursor-pointer"
+          className="w-6 h-6 text-white hover:text-carnitas-light cursor-pointer"
           onClick={handleAuthClick}
         />
       ) : (
         <User
-          className="w-6 h-6 text-carnitas-text hover:text-carnitas-primary cursor-pointer"
+          className="w-6 h-6 text-white hover:text-carnitas-light cursor-pointer"
           onClick={handleAuthClick}
         />
       )}
