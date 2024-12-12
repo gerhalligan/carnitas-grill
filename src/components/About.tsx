@@ -5,13 +5,13 @@ const About = () => {
       <div className="container mx-auto px-4 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="menu-title">
+            <h2 className="menu-title text-5xl">
               Our Story
             </h2>
-            <p className="menu-description">
+            <p className="menu-description text-2xl">
               For over three generations, we've been perfecting the art of making authentic Mexican carnitas. Our recipe, passed down through family traditions, combines the finest ingredients with time-honored cooking techniques.
             </p>
-            <p className="menu-description">
+            <p className="menu-description text-2xl">
               Every day, our skilled chefs prepare fresh carnitas using locally sourced ingredients and traditional copper pots, ensuring that each bite delivers the authentic taste of Mexico.
             </p>
           </div>
