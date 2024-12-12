@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full bg-white shadow-md z-50">
+    <nav className="fixed top-0 w-full bg-carnitas-light border-b-2 border-black shadow-[0_2px_0_0_theme(colors.carnitas.text)] z-50">
       <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-24">
@@ -23,9 +23,10 @@ const Navbar = () => {
             <Button
               variant="ghost"
               size="icon"
+              className="hover:bg-transparent"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6 text-carnitas-text hover:text-carnitas-primary transition-colors" />
             </Button>
           </div>
         </div>
