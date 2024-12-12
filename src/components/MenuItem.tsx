@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { MenuCategory } from "@/types/database.types";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
@@ -89,32 +89,33 @@ const MenuItem = ({ name, description, price, image, category, ingredients = [] 
         </p>
       </CardContent>
       <CardFooter className="flex gap-2">
-        <DialogTrigger asChild>
-          <Button 
-            variant="outline" 
-            className="flex-1 border-carnitas-primary text-carnitas-primary hover:bg-carnitas-primary hover:text-white"
-            onClick={() => setIsCustomizing(true)}
-          >
-            Customize
-          </Button>
-        </DialogTrigger>
+        <Dialog open={isCustomizing} onOpenChange={setIsCustomizing}>
+          <DialogTrigger asChild>
+            <Button 
+              variant="outline" 
+              className="flex-1 border-carnitas-primary text-carnitas-primary hover:bg-carnitas-primary hover:text-white"
+            >
+              Customize
+            </Button>
+          </DialogTrigger>
+          <CustomizeDialog
+            isOpen={isCustomizing}
+            onOpenChange={setIsCustomizing}
+            itemName={name}
+            ingredients={ingredients}
+            selectedIngredients={selectedIngredients}
+            onIngredientToggle={handleIngredientToggle}
+            notes={notes}
+            onNotesChange={setNotes}
+            onComplete={handleCustomizationComplete}
+          />
+        </Dialog>
         <Button 
           className="flex-1 bg-carnitas-primary hover:bg-carnitas-secondary"
           onClick={handleAddToCart}
         >
           Add to Cart
         </Button>
-        <CustomizeDialog
-          isOpen={isCustomizing}
-          onOpenChange={setIsCustomizing}
-          itemName={name}
-          ingredients={ingredients}
-          selectedIngredients={selectedIngredients}
-          onIngredientToggle={handleIngredientToggle}
-          notes={notes}
-          onNotesChange={setNotes}
-          onComplete={handleCustomizationComplete}
-        />
       </CardFooter>
     </Card>
   );
