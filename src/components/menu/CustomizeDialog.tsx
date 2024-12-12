@@ -31,16 +31,16 @@ const CustomizeDialog = ({
   return (
     <DialogContent className="sm:max-w-[425px]">
       <DialogHeader>
-        <DialogTitle className="font-sans text-4xl text-carnitas-text">
+        <DialogTitle className="font-handwritten text-4xl text-carnitas-text">
           Customize your {itemName}
         </DialogTitle>
-        <DialogDescription className="font-sans text-2xl">
+        <DialogDescription className="font-handwritten text-2xl">
           Select ingredients you'd like to include in your {itemName}.
         </DialogDescription>
       </DialogHeader>
       <div className="grid gap-4 py-4">
         <div className="space-y-2">
-          <label className="text-xl font-sans font-medium leading-none text-carnitas-text">
+          <label className="text-xl font-handwritten font-medium leading-none text-carnitas-text">
             Ingredients
           </label>
           <IngredientList
@@ -52,7 +52,7 @@ const CustomizeDialog = ({
         <div className="space-y-2">
           <label
             htmlFor="notes"
-            className="text-xl font-sans font-medium leading-none text-carnitas-text"
+            className="text-xl font-handwritten font-medium leading-none text-carnitas-text"
           >
             Special Instructions
           </label>
@@ -61,7 +61,7 @@ const CustomizeDialog = ({
             placeholder="Add any special instructions here..."
             value={notes}
             onChange={(e) => onNotesChange(e.target.value)}
-            className="resize-none text-lg font-sans"
+            className="resize-none text-lg font-handwritten"
           />
         </div>
       </div>

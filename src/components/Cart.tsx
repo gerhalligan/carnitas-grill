@@ -34,11 +34,11 @@ export const Cart = () => {
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-lg">
         <SheetHeader>
-          <SheetTitle className="font-sans text-4xl text-carnitas-text">Your Cart</SheetTitle>
+          <SheetTitle className="font-handwritten text-4xl text-carnitas-text">Your Cart</SheetTitle>
         </SheetHeader>
         <div className="mt-8">
           {items.length === 0 ? (
-            <p className="text-center text-gray-500 font-sans text-2xl">Your cart is empty</p>
+            <p className="text-center text-gray-500 font-handwritten text-2xl">Your cart is empty</p>
           ) : (
             <div className="space-y-8">
               {items.map((item) => (
@@ -48,14 +48,14 @@ export const Cart = () => {
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex-1">
-                      <h3 className="font-sans text-2xl text-carnitas-text">{item.name}</h3>
-                      <p className="text-xl text-gray-500 font-sans">€{item.price.toFixed(2)}</p>
+                      <h3 className="font-handwritten text-2xl text-carnitas-text">{item.name}</h3>
+                      <p className="text-xl text-gray-500 font-handwritten">€{item.price.toFixed(2)}</p>
                       {item.customizations?.removedIngredients && (
                         <div className="mt-2">
-                          <p className="text-lg text-gray-500 mb-1 font-sans">Without:</p>
+                          <p className="text-lg text-gray-500 mb-1 font-handwritten">Without:</p>
                           <div className="flex flex-wrap gap-1">
                             {item.customizations.removedIngredients.map((ingredient, index) => (
-                              <Badge key={index} variant="secondary" className="text-lg font-sans">
+                              <Badge key={index} variant="secondary" className="text-lg font-handwritten">
                                 {ingredient}
                               </Badge>
                             ))}
@@ -63,7 +63,7 @@ export const Cart = () => {
                         </div>
                       )}
                       {item.customizations?.notes && (
-                        <p className="text-lg text-gray-500 mt-2 font-sans">
+                        <p className="text-lg text-gray-500 mt-2 font-handwritten">
                           Note: {item.customizations.notes}
                         </p>
                       )}
@@ -76,7 +76,7 @@ export const Cart = () => {
                       >
                         <Minus className="h-4 w-4" />
                       </Button>
-                      <span className="w-8 text-center text-xl font-sans">{item.quantity}</span>
+                      <span className="w-8 text-center text-xl font-handwritten">{item.quantity}</span>
                       <Button
                         variant="outline"
                         size="icon"
@@ -96,7 +96,7 @@ export const Cart = () => {
                 </div>
               ))}
               <div className="border-t pt-4">
-                <div className="flex justify-between font-sans text-2xl text-carnitas-text">
+                <div className="flex justify-between font-handwritten text-2xl text-carnitas-text">
                   <span>Total</span>
                   <span>€{total.toFixed(2)}</span>
                 </div>
@@ -106,7 +106,7 @@ export const Cart = () => {
                   </Button>
                   <Button
                     variant="outline"
-                    className="w-full font-sans text-xl"
+                    className="w-full font-handwritten text-xl"
                     onClick={clearCart}
                   >
                     Clear Cart
