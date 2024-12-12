@@ -69,12 +69,12 @@ const TopSellingDishes = () => {
                 />
               </div>
               <CardHeader>
-                <CardTitle className="text-3xl font-handwritten text-carnitas-text transition-colors duration-300 hover:text-gray-700">{dish.name}</CardTitle>
-                <CardDescription className="text-xl transition-colors duration-300 hover:text-gray-700">{dish.description}</CardDescription>
+                <CardTitle className="text-3xl font-handwritten text-carnitas-text hover:text-gray-700">{dish.name}</CardTitle>
+                <CardDescription className="text-xl hover:text-gray-700">{dish.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-4xl font-bold text-carnitas-primary font-handwritten transition-colors duration-300 hover:text-gray-700">€{dish.price.toFixed(2)}</p>
-                <p className="text-2xl text-gray-500 mt-2 font-handwritten transition-colors duration-300 hover:text-gray-700">Ordered {dish.orders_count} times</p>
+                <p className="text-4xl font-bold text-carnitas-primary font-handwritten hover:text-gray-700">€{dish.price.toFixed(2)}</p>
+                <p className="text-2xl text-gray-500 mt-2 font-handwritten hover:text-gray-700">Ordered {dish.orders_count} times</p>
               </CardContent>
               <CardFooter>
                 <Button 
