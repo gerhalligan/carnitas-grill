@@ -13,11 +13,43 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { MenuItemFormData } from "@/types/menu.types";
 import { Plus, Edit, Trash } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 
 export function MenuManagement() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const { menuItems, isLoading, createMenuItem, updateMenuItem, deleteMenuItem } = useMenu();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<MenuItemFormData | null>(null);
+
+  // Fetch user profile to check admin status
+  const { data: profile } = useQuery({
+    queryKey: ["profile", user?.id],
+    queryFn: async () => {
+      if (!user?.id) return null;
+      const { data } = await supabase
+        .from("user_profiles")
+        .select("*")
+        .eq("user_id", user.id)
+        .single();
+      return data;
+    },
+    enabled: !!user?.id,
+  });
+
+  // Redirect to auth page if not logged in
+  if (!user) {
+    navigate("/auth");
+    return null;
+  }
+
+  // Hide component if user is not an admin
+  if (!profile?.is_admin) {
+    return null;
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

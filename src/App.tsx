@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Menu from "./pages/Menu";
 import Locations from "./pages/Locations";
 import About from "./pages/About";
+import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/locations" element={<Locations />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/auth" element={<Auth />} />
               </Routes>
             </BrowserRouter>
           </div>
