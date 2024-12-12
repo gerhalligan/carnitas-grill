@@ -24,7 +24,7 @@ export const Cart = () => {
           className="relative"
           aria-label="Shopping Cart"
         >
-          <ShoppingCart className="h-6 w-6 text-white hover:text-gray-700 transition-colors" />
+          <ShoppingCart className="h-6 w-6 text-white" />
           {items.length > 0 && (
             <span className="absolute -top-1 -right-1 bg-carnitas-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
               {items.reduce((sum, item) => sum + item.quantity, 0)}
