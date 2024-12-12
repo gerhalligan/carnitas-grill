@@ -53,7 +53,8 @@ const MenuItem = ({ name, description, price, image, category, ingredients = [] 
       name, 
       price, 
       category,
-      customizations: Object.keys(customizations).length > 0 ? customizations : undefined
+      customizations: Object.keys(customizations).length > 0 ? customizations : undefined,
+      ingredients: ingredients
     });
 
     if (removedIngredients.length > 0) {
@@ -63,10 +64,6 @@ const MenuItem = ({ name, description, price, image, category, ingredients = [] 
     }
 
     setNotes("");
-  };
-
-  const handleCustomizationComplete = () => {
-    handleAddToCart();
     setIsCustomizing(false);
   };
 
@@ -107,7 +104,7 @@ const MenuItem = ({ name, description, price, image, category, ingredients = [] 
             onIngredientToggle={handleIngredientToggle}
             notes={notes}
             onNotesChange={setNotes}
-            onComplete={handleCustomizationComplete}
+            onComplete={handleAddToCart}
           />
         </Dialog>
         <Button 
