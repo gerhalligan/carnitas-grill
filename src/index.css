@@ -90,14 +90,6 @@
   .menu-description {
     @apply font-handwritten text-2xl text-gray-600;
   }
-
-  .mexican-pattern-bg {
-    background-color: theme('colors.carnitas.turquoise');
-    background-image: url('/lovable-uploads/778a281d-c66f-42a4-b2ec-c25398a06bde.png');
-    background-size: 400px;
-    background-repeat: repeat;
-    opacity: 0.1;
-  }
 }
 
 html {
