@@ -56,6 +56,7 @@ export type Database = {
           image_url: string | null
           ingredients: Json | null
           name: string
+          orders_count: number | null
           price: number
         }
         Insert: {
@@ -68,6 +69,7 @@ export type Database = {
           image_url?: string | null
           ingredients?: Json | null
           name: string
+          orders_count?: number | null
           price: number
         }
         Update: {
@@ -80,6 +82,7 @@ export type Database = {
           image_url?: string | null
           ingredients?: Json | null
           name?: string
+          orders_count?: number | null
           price?: number
         }
         Relationships: []
