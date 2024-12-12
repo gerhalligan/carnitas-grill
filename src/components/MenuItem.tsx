@@ -30,6 +30,7 @@ const MenuItem = ({
 }: MenuItemProps) => {
   const [isCustomizing, setIsCustomizing] = useState(false);
   const { addItem } = useCart();
+  // Initialize selectedIngredients with all ingredient IDs
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>(
     ingredients.map(ing => ing.id)
   );
