@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Architects+Daughter&display=swap');
+@import url('https://use.typekit.net/[your-kit-code].css'); /* Note: Bodoni Egyptian Pro requires a license */
 
 @tailwind base;
 @tailwind components;
@@ -73,7 +74,7 @@
   }
 
   .sketch-button {
-    @apply relative px-6 py-4 bg-carnitas-primary text-white border-2 border-black rounded-md font-handwritten text-4xl transform transition-all duration-300;
+    @apply relative px-6 py-4 bg-carnitas-primary text-white border-2 border-black rounded-md font-bodoni text-4xl transform transition-all duration-300;
     box-shadow: 2px 2px 0 0 theme('colors.carnitas.text');
   }
 
@@ -83,15 +84,16 @@
   }
 
   .menu-title {
-    @apply font-sans text-5xl font-extrabold text-carnitas-primary uppercase tracking-tight relative inline-block;
+    @apply font-bodoni text-5xl font-extrabold text-carnitas-primary uppercase tracking-tight relative inline-block;
     text-shadow: 2px 2px 0 theme('colors.carnitas.text');
   }
 
   .menu-description {
-    @apply font-handwritten text-2xl text-gray-600;
+    @apply font-bodoni text-2xl text-gray-600;
   }
 }
 
 html {
   scroll-behavior: smooth;
+  font-family: 'bodoni-egyptian-pro', serif;
 }

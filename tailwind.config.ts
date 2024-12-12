@@ -2,15 +2,15 @@ import type { Config } from "tailwindcss";
 
 const themeColors = {
   carnitas: {
-    primary: "#ea384c", // Logo red
+    primary: "#ea384c",
     secondary: "#C0392B",
     accent: "#E67E22",
-    text: "#222222", // Logo dark gray
+    text: "#222222",
     light: "#FDF2E9",
     turquoise: "#40E0D0",
     yellow: "#FFD700",
-    darkGreyTransparent: "rgba(50, 50, 50, 0.6)", // New transparent dark grey
-    blackTransparent: "rgba(0, 0, 0, 0.6)", // New transparent black
+    darkGreyTransparent: "rgba(50, 50, 50, 0.6)",
+    blackTransparent: "rgba(0, 0, 0, 0.6)",
   },
   border: "hsl(var(--border))",
   input: "hsl(var(--input))",
@@ -98,9 +98,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        handwritten: ["Caveat", "cursive"],
-        sketch: ["Architects Daughter", "cursive"],
+        sans: ['bodoni-egyptian-pro', 'serif'],
+        bodoni: ['bodoni-egyptian-pro', 'serif'],
+        handwritten: ['bodoni-egyptian-pro', 'serif'],
+        sketch: ['bodoni-egyptian-pro', 'serif'],
       },
       colors: themeColors,
       ...animations,
