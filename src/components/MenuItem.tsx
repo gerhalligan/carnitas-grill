@@ -29,34 +29,16 @@ interface MenuItemProps {
   price: number;
   image: string;
   category: MenuCategory;
+  ingredients?: { id: string; name: string; }[];
 }
 
-interface Ingredient {
-  id: string;
-  name: string;
-}
-
-const MenuItem = ({ name, description, price, image, category }: MenuItemProps) => {
+const MenuItem = ({ name, description, price, image, category, ingredients = [] }: MenuItemProps) => {
   const [isCustomizing, setIsCustomizing] = useState(false);
   const { addItem } = useCart();
-  const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<string[]>(
+    ingredients.map(ing => ing.id)
+  );
   const [notes, setNotes] = useState("");
-
-  const getDefaultIngredients = (category: MenuCategory, itemName: string): Ingredient[] => {
-    if (category === "Tacos") {
-      return [
-        { id: "tortilla", name: "Corn Tortilla" },
-        { id: "meat", name: "Carnitas" },
-        { id: "onion", name: "Diced Onions" },
-        { id: "cilantro", name: "Fresh Cilantro" },
-        { id: "lime", name: "Lime Wedges" },
-        { id: "salsa", name: "Salsa Verde" },
-      ];
-    }
-    return [];
-  };
-
-  const ingredients = getDefaultIngredients(category, name);
 
   const handleIngredientToggle = (ingredientId: string) => {
     setSelectedIngredients(current =>
@@ -129,7 +111,7 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
             <DialogHeader>
               <DialogTitle>Customize your {name}</DialogTitle>
               <DialogDescription>
-                Select ingredients you'd like to remove from your {name}.
+                Select ingredients you'd like to include in your {name}.
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
@@ -137,7 +119,7 @@ const MenuItem = ({ name, description, price, image, category }: MenuItemProps) 
                 <div key={ingredient.id} className="flex items-center space-x-2">
                   <Checkbox
                     id={ingredient.id}
-                    checked={!selectedIngredients.includes(ingredient.id)}
+                    checked={selectedIngredients.includes(ingredient.id)}
                     onCheckedChange={() => handleIngredientToggle(ingredient.id)}
                   />
                   <label
