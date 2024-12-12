@@ -14,7 +14,7 @@ export interface MenuItem {
 export interface MenuItemFormData {
   id?: string;
   name: string;
-  description: string | null;
+  description?: string | null;
   price: number;
   category: string;
   image_url: string | null;
