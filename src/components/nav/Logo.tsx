@@ -7,7 +7,7 @@ const Logo: FC = () => {
         <img 
           src="/lovable-uploads/0f38bd79-49bc-4af0-822e-8bb1f010f946.png" 
           alt="Carnitas Mexican Fresh Grill" 
-          className="h-26 w-auto"
+          className="h-26 w-auto max-w-[200px]"
         />
       </a>
     </div>
