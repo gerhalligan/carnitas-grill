@@ -81,6 +81,7 @@ export interface CartItem {
     removedIngredients?: string[];
     notes?: string;
   };
+  ingredients?: { id: string; name: string; }[];
 }
 
 export type MenuCategory = "Tacos" | "Bowls" | "Burritos" | "Sides" | "Drinks";
