@@ -20,8 +20,13 @@ const MenuItem = ({
   description, 
   price, 
   image, 
-  category, 
-  ingredients = [] 
+  category,
+  ingredients = [
+    { id: "1", name: "Lettuce" },
+    { id: "2", name: "Tomatoes" },
+    { id: "3", name: "Onions" },
+    { id: "4", name: "Cilantro" },
+  ]
 }: MenuItemProps) => {
   const [isCustomizing, setIsCustomizing] = useState(false);
   const { addItem } = useCart();
@@ -83,8 +88,6 @@ const MenuItem = ({
       <CardFooter>
         <MenuItemActions
           name={name}
-          price={price}
-          category={category}
           ingredients={ingredients}
           isCustomizing={isCustomizing}
           selectedIngredients={selectedIngredients}

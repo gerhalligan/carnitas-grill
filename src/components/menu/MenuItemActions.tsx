@@ -5,8 +5,6 @@ import CustomizeDialog from "./CustomizeDialog";
 
 interface MenuItemActionsProps {
   name: string;
-  price: number;
-  category: MenuCategory;
   ingredients: { id: string; name: string; }[];
   isCustomizing: boolean;
   selectedIngredients: string[];
@@ -31,7 +29,7 @@ const MenuItemActions = ({
   onAddToCart,
 }: MenuItemActionsProps) => {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 w-full">
       <Dialog open={isCustomizing} onOpenChange={(open) => open ? onCustomizeClick() : onCustomizeClose()}>
         <DialogTrigger asChild>
           <Button 

@@ -37,11 +37,16 @@ const CustomizeDialog = ({
         </DialogDescription>
       </DialogHeader>
       <div className="grid gap-4 py-4">
-        <IngredientList
-          ingredients={ingredients}
-          selectedIngredients={selectedIngredients}
-          onIngredientToggle={onIngredientToggle}
-        />
+        <div className="space-y-2">
+          <label className="text-sm font-medium leading-none">
+            Ingredients
+          </label>
+          <IngredientList
+            ingredients={ingredients}
+            selectedIngredients={selectedIngredients}
+            onIngredientToggle={onIngredientToggle}
+          />
+        </div>
         <div className="space-y-2">
           <label
             htmlFor="notes"
