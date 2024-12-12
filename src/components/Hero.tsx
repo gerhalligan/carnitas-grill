@@ -17,7 +17,7 @@ const Hero = () => {
           Authentic Mexican
           <br />
           <span className="font-handwritten text-carnitas-yellow animate-float inline-block">
-            Street Food
+            Street food
           </span>
         </h1>
         <p className="font-handwritten text-3xl text-white mb-8 animate-fadeIn drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
