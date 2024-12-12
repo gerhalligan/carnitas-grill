@@ -42,8 +42,6 @@ const MenuItemActions = ({
           </Button>
         </DialogTrigger>
         <CustomizeDialog
-          isOpen={isCustomizing}
-          onOpenChange={(open) => !open && onCustomizeClose()}
           itemName={name}
           ingredients={ingredients}
           selectedIngredients={selectedIngredients}

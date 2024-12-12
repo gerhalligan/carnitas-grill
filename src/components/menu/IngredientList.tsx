@@ -12,7 +12,7 @@ const IngredientList = ({
   onIngredientToggle 
 }: IngredientListProps) => {
   return (
-    <>
+    <div className="space-y-2">
       {ingredients.map((ingredient) => (
         <div key={ingredient.id} className="flex items-center space-x-2">
           <Checkbox
@@ -28,7 +28,7 @@ const IngredientList = ({
           </label>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

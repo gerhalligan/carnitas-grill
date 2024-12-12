@@ -1,5 +1,4 @@
 import {
-  Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -11,8 +10,6 @@ import { Textarea } from "@/components/ui/textarea";
 import IngredientList from "./IngredientList";
 
 interface CustomizeDialogProps {
-  isOpen: boolean;
-  onOpenChange: (open: boolean) => void;
   itemName: string;
   ingredients: { id: string; name: string; }[];
   selectedIngredients: string[];
@@ -23,8 +20,6 @@ interface CustomizeDialogProps {
 }
 
 const CustomizeDialog = ({
-  isOpen,
-  onOpenChange,
   itemName,
   ingredients,
   selectedIngredients,
