@@ -30,10 +30,10 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         carnitas: {
-          primary: "#D35400",
+          primary: "#ea384c", // Updated to match logo red
           secondary: "#C0392B",
           accent: "#E67E22",
-          text: "#2C3E50",
+          text: "#222222", // Updated to match logo dark gray
           light: "#FDF2E9",
           turquoise: "#40E0D0",
           yellow: "#FFD700",
