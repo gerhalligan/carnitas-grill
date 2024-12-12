@@ -16,11 +16,11 @@ const Hero = () => {
         <h1 className="font-sans text-6xl md:text-8xl font-extrabold text-carnitas-primary uppercase tracking-tight mb-6 animate-fadeIn drop-shadow-[2px_2px_0_rgba(34,34,34,1)] [text-shadow:_-1px_-1px_0_#fff,_1px_-1px_0_#fff,_-1px_1px_0_#fff,_1px_1px_0_#fff]">
           Authentic Mexican
           <br />
-          <span className="font-handwritten text-carnitas-yellow animate-float inline-block">
+          <span className="font-sans text-carnitas-yellow animate-float inline-block">
             Street Food
           </span>
         </h1>
-        <p className="font-handwritten text-3xl text-white mb-8 animate-fadeIn drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+        <p className="font-sans text-3xl text-white mb-8 animate-fadeIn drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
           Experience the true flavors of Mexico with our handcrafted tacos, burritos, and more
         </p>
         <Button

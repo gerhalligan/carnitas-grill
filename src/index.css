@@ -53,7 +53,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border font-sans;
   }
   body {
     @apply bg-background text-foreground;
@@ -73,7 +73,7 @@
   }
 
   .sketch-button {
-    @apply relative px-6 py-4 bg-carnitas-primary text-white border-2 border-black rounded-md font-handwritten text-4xl transform transition-all duration-300;
+    @apply relative px-6 py-4 bg-carnitas-primary text-white border-2 border-black rounded-md font-sans text-2xl transform transition-all duration-300;
     box-shadow: 2px 2px 0 0 theme('colors.carnitas.text');
   }
 
@@ -88,7 +88,7 @@
   }
 
   .menu-description {
-    @apply font-handwritten text-2xl text-gray-600;
+    @apply font-sans text-xl text-gray-600;
   }
 }
 
