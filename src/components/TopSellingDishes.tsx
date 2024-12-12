@@ -22,7 +22,7 @@ const TopSellingDishes = () => {
     return (
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-carnitas-text mb-12">
+          <h2 className="menu-title mb-12">
             Most Popular Dishes
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -52,15 +52,15 @@ const TopSellingDishes = () => {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-carnitas-text mb-4">
+        <h2 className="menu-title mb-4">
           Most Popular Dishes
         </h2>
-        <p className="text-center text-gray-600 mb-12">
+        <p className="menu-description mb-12">
           Our customers' favorites, ordered time and time again
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {dishes?.map((dish) => (
-            <Card key={dish.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+            <Card key={dish.id} className="sketch-card">
               <div className="h-48 overflow-hidden">
                 <img
                   src={dish.image_url || "/placeholder.svg"}
@@ -69,16 +69,16 @@ const TopSellingDishes = () => {
                 />
               </div>
               <CardHeader>
-                <CardTitle className="text-xl text-carnitas-text">{dish.name}</CardTitle>
-                <CardDescription>{dish.description}</CardDescription>
+                <CardTitle className="text-2xl font-handwritten text-carnitas-text">{dish.name}</CardTitle>
+                <CardDescription className="text-lg">{dish.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-2xl font-bold text-carnitas-primary">€{dish.price.toFixed(2)}</p>
-                <p className="text-sm text-gray-500 mt-2">Ordered {dish.orders_count} times</p>
+                <p className="text-3xl font-bold text-carnitas-primary font-handwritten">€{dish.price.toFixed(2)}</p>
+                <p className="text-lg text-gray-500 mt-2 font-handwritten">Ordered {dish.orders_count} times</p>
               </CardContent>
               <CardFooter>
                 <Button 
-                  className="w-full bg-carnitas-primary hover:bg-carnitas-secondary"
+                  className="sketch-button w-full"
                   onClick={() => handleAddToCart(dish)}
                 >
                   Add to Order
