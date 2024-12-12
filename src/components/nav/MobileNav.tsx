@@ -16,7 +16,7 @@ const MobileNav: FC<MobileNavProps> = ({ isOpen, onSearchClick }) => {
         <NavLinks className="block" />
         <NavActions 
           onSearchClick={onSearchClick} 
-          className="flex-col items-start space-y-6"
+          className="flex-row items-center justify-start flex-wrap gap-4"
         />
       </div>
     </div>
