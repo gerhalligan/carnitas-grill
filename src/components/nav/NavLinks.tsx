@@ -7,16 +7,16 @@ interface NavLinksProps {
 const NavLinks: FC<NavLinksProps> = ({ className = "" }) => {
   return (
     <>
-      <a href="/" className={`font-handwritten text-lg text-carnitas-text hover:text-carnitas-primary transition-colors ${className}`}>
+      <a href="/" className={`font-handwritten text-2xl text-carnitas-text hover:text-carnitas-primary transition-colors ${className}`}>
         Home
       </a>
-      <a href="/menu" className={`font-handwritten text-lg text-carnitas-text hover:text-carnitas-primary transition-colors ${className}`}>
+      <a href="/menu" className={`font-handwritten text-2xl text-carnitas-text hover:text-carnitas-primary transition-colors ${className}`}>
         Menu
       </a>
-      <a href="/locations" className={`font-handwritten text-lg text-carnitas-text hover:text-carnitas-primary transition-colors ${className}`}>
+      <a href="/locations" className={`font-handwritten text-2xl text-carnitas-text hover:text-carnitas-primary transition-colors ${className}`}>
         Locations
       </a>
-      <a href="/about" className={`font-handwritten text-lg text-carnitas-text hover:text-carnitas-primary transition-colors ${className}`}>
+      <a href="/about" className={`font-handwritten text-2xl text-carnitas-text hover:text-carnitas-primary transition-colors ${className}`}>
         About
       </a>
     </>

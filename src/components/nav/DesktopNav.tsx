@@ -8,7 +8,7 @@ interface DesktopNavProps {
 
 const DesktopNav: FC<DesktopNavProps> = ({ onSearchClick }) => {
   return (
-    <div className="hidden md:flex items-center space-x-8">
+    <div className="hidden md:flex items-center space-x-12">
       <NavLinks />
       <NavActions onSearchClick={onSearchClick} />
     </div>
