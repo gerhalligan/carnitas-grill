@@ -32,12 +32,11 @@ const MenuItemActions = ({
 }: MenuItemActionsProps) => {
   return (
     <div className="flex gap-2">
-      <Dialog open={isCustomizing} onOpenChange={onCustomizeClose}>
+      <Dialog open={isCustomizing} onOpenChange={(open) => open ? onCustomizeClick() : onCustomizeClose()}>
         <DialogTrigger asChild>
           <Button 
             variant="outline" 
             className="flex-1 border-carnitas-primary text-carnitas-primary hover:bg-carnitas-primary hover:text-white"
-            onClick={onCustomizeClick}
           >
             Customize
           </Button>
