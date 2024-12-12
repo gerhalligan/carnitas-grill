@@ -11,11 +11,17 @@ const Menu = () => {
     queryKey: ["profile", user?.id],
     queryFn: async () => {
       if (!user?.id) return null;
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("user_profiles")
         .select("*")
         .eq("user_id", user.id)
-        .single();
+        .maybeSingle();
+        
+      if (error && error.code !== 'PGRST116') {
+        console.error("Error fetching profile:", error);
+        throw error;
+      }
+      
       return data;
     },
     enabled: !!user?.id,
