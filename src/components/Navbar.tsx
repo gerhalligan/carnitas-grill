@@ -5,13 +5,17 @@ import { SearchCommand } from "./SearchCommand";
 import Logo from "./nav/Logo";
 import DesktopNav from "./nav/DesktopNav";
 import MobileNav from "./nav/MobileNav";
+import { useScroll } from "@/hooks/use-scroll";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const isVisible = useScroll();
 
   return (
-    <nav className="fixed top-0 w-full bg-transparent shadow-lg z-50">
+    <nav className={`fixed top-0 w-full bg-transparent shadow-lg z-50 transition-transform duration-300 ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
       <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between h-24">
