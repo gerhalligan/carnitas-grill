@@ -30,23 +30,23 @@ const NavActions: FC<NavActionsProps> = ({ onSearchClick, className = "" }) => {
   return (
     <div className={`flex items-center space-x-4 ${className}`}>
       <Search 
-        className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer" 
+        className="w-6 h-6 text-carnitas-text hover:text-carnitas-primary cursor-pointer" 
         onClick={onSearchClick}
       />
       {user ? (
         <LogOut
-          className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer"
+          className="w-6 h-6 text-carnitas-text hover:text-carnitas-primary cursor-pointer"
           onClick={handleAuthClick}
         />
       ) : (
         <User
-          className="w-5 h-5 text-carnitas-text hover:text-carnitas-primary cursor-pointer"
+          className="w-6 h-6 text-carnitas-text hover:text-carnitas-primary cursor-pointer"
           onClick={handleAuthClick}
         />
       )}
       <Cart />
       <Button 
-        className="sketch-button bg-carnitas-yellow text-carnitas-text hover:bg-yellow-400 font-handwritten text-lg"
+        className="sketch-button bg-carnitas-yellow text-carnitas-text hover:bg-yellow-400 font-handwritten"
         onClick={() => navigate('/menu')}
       >
         Order Now
