@@ -19,7 +19,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const addItem = (newItem: Omit<CartItem, "id" | "quantity">) => {
     setItems((currentItems) => {
       const existingItem = currentItems.find(
-        (item) => item.name === newItem.name && item.category === newItem.category
+        (item) => 
+          item.name === newItem.name && 
+          item.category === newItem.category &&
+          JSON.stringify(item.customizations) === JSON.stringify(newItem.customizations)
       );
 
       if (existingItem) {

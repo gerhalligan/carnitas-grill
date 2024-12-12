@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
 
 export const Cart = () => {
   const { items, removeItem, updateQuantity, clearCart, total } = useCart();
@@ -43,35 +44,54 @@ export const Cart = () => {
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center justify-between gap-4"
+                  className="space-y-4"
                 >
-                  <div className="flex-1">
-                    <h3 className="font-medium">{item.name}</h3>
-                    <p className="text-sm text-gray-500">€{item.price.toFixed(2)}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                    >
-                      <Minus className="h-4 w-4" />
-                    </Button>
-                    <span className="w-8 text-center">{item.quantity}</span>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                    >
-                      <Plus className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => removeItem(item.id)}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="font-medium">{item.name}</h3>
+                      <p className="text-sm text-gray-500">€{item.price.toFixed(2)}</p>
+                      {item.customizations?.removedIngredients && (
+                        <div className="mt-2">
+                          <p className="text-sm text-gray-500 mb-1">Without:</p>
+                          <div className="flex flex-wrap gap-1">
+                            {item.customizations.removedIngredients.map((ingredient, index) => (
+                              <Badge key={index} variant="secondary">
+                                {ingredient}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {item.customizations?.notes && (
+                        <p className="text-sm text-gray-500 mt-2">
+                          Note: {item.customizations.notes}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      >
+                        <Minus className="h-4 w-4" />
+                      </Button>
+                      <span className="w-8 text-center">{item.quantity}</span>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      >
+                        <Plus className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => removeItem(item.id)}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ))}
