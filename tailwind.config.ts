@@ -98,10 +98,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['bodoni-egyptian-pro', 'serif'],
-        bodoni: ['bodoni-egyptian-pro', 'serif'],
-        handwritten: ['bodoni-egyptian-pro', 'serif'],
-        sketch: ['bodoni-egyptian-pro', 'serif'],
+        sans: ['Playfair Display', 'serif'],
+        display: ['Playfair Display', 'serif'],
+        handwritten: ['Playfair Display', 'serif'],
+        sketch: ['Playfair Display', 'serif'],
       },
       colors: themeColors,
       ...animations,
