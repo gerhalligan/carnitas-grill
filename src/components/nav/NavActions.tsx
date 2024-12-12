@@ -46,7 +46,7 @@ const NavActions: FC<NavActionsProps> = ({ onSearchClick, className = "" }) => {
       )}
       <Cart />
       <Button 
-        className="bg-carnitas-primary hover:bg-carnitas-secondary text-white"
+        className="sketch-button bg-carnitas-yellow text-carnitas-text hover:bg-yellow-400 font-handwritten text-lg"
         onClick={() => navigate('/menu')}
       >
         Order Now

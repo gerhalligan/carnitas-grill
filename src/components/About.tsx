@@ -1,25 +1,28 @@
 const About = () => {
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
+    <section className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 mexican-pattern-bg"></div>
+      <div className="container mx-auto px-4 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="text-4xl font-bold text-carnitas-text">
+            <h2 className="menu-title">
               Our Story
             </h2>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="menu-description">
               For over three generations, we've been perfecting the art of making authentic Mexican carnitas. Our recipe, passed down through family traditions, combines the finest ingredients with time-honored cooking techniques.
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="menu-description">
               Every day, our skilled chefs prepare fresh carnitas using locally sourced ingredients and traditional copper pots, ensuring that each bite delivers the authentic taste of Mexico.
             </p>
           </div>
-          <div className="relative h-[400px]">
-            <img
-              src="/lovable-uploads/d9f2d4a7-5914-4e36-8494-181ec54f4a89.png"
-              alt="Delicious carnitas burrito with fresh vegetables"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
+          <div className="relative">
+            <div className="sketch-card overflow-hidden h-[400px]">
+              <img
+                src="/lovable-uploads/d9f2d4a7-5914-4e36-8494-181ec54f4a89.png"
+                alt="Delicious carnitas burrito with fresh vegetables"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
