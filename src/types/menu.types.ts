@@ -1,12 +1,12 @@
 export interface MenuItem {
   id: string;
   name: string;
-  description?: string;
+  description?: string | null;
   price: number;
   category: string;
-  image_url?: string;
-  available?: boolean;
-  customization_options?: Record<string, any>;
+  image_url?: string | null;
+  available: boolean;
+  customization_options?: Record<string, any> | null;
   ingredients?: string[];
   orders_count?: number;
 }
@@ -17,7 +17,7 @@ export interface MenuItemFormData {
   description?: string | null;
   price: number;
   category: string;
-  image_url: string | null;
+  image_url?: string | null;
   available: boolean;
   customization_options?: Record<string, any> | null;
 }
