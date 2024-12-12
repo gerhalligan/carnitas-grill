@@ -7,8 +7,6 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { CartProvider } from "@/contexts/CartContext";
 import Index from "./pages/Index";
 import Menu from "./pages/Menu";
-import Locations from "./pages/Locations";
-import About from "./pages/About";
 import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
@@ -25,8 +23,6 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/menu" element={<Menu />} />
-                <Route path="/locations" element={<Locations />} />
-                <Route path="/about" element={<About />} />
                 <Route path="/auth" element={<Auth />} />
               </Routes>
             </BrowserRouter>
