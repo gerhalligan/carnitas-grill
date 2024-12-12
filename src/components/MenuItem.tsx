@@ -30,7 +30,6 @@ const MenuItem = ({
 }: MenuItemProps) => {
   const [isCustomizing, setIsCustomizing] = useState(false);
   const { addItem } = useCart();
-  // Initialize selectedIngredients with all ingredient IDs
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>(
     ingredients.map(ing => ing.id)
   );
@@ -73,12 +72,12 @@ const MenuItem = ({
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+    <Card className="sketch-card group">
       <div className="h-48 overflow-hidden">
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
       <MenuItemDetails

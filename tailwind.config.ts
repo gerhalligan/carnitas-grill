@@ -18,6 +18,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        handwritten: ["Caveat", "cursive"],
+        sketch: ["Architects Daughter", "cursive"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -25,11 +30,11 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         carnitas: {
-          primary: "#D35400", // Deeper orange
-          secondary: "#C0392B", // Rich red
-          accent: "#E67E22", // Bright orange
-          text: "#2C3E50", // Deep blue-gray
-          light: "#FDF2E9", // Light orange tint
+          primary: "#D35400",
+          secondary: "#C0392B",
+          accent: "#E67E22",
+          text: "#2C3E50",
+          light: "#FDF2E9",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -60,9 +65,6 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      fontFamily: {
-        sans: ["Inter", "sans-serif"],
-      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -76,11 +78,16 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         fadeIn: "fadeIn 0.5s ease-out",
+        wiggle: 'wiggle 1s ease-in-out infinite',
       },
     },
   },

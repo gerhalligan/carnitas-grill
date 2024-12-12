@@ -10,11 +10,11 @@ const MenuItemDetails = ({ name, description, price }: MenuItemDetailsProps) => 
   return (
     <>
       <CardHeader>
-        <CardTitle className="text-xl text-carnitas-text">{name}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardTitle className="font-sketch text-xl text-carnitas-text">{name}</CardTitle>
+        <CardDescription className="font-handwritten text-lg">{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-2xl font-bold text-carnitas-primary">
+        <p className="font-handwritten text-2xl font-bold text-carnitas-primary">
           €{price.toFixed(2)}
         </p>
       </CardContent>

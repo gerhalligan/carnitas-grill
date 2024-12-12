@@ -34,7 +34,7 @@ const MenuItemActions = ({
         <DialogTrigger asChild>
           <Button 
             variant="outline" 
-            className="flex-1 border-carnitas-primary text-carnitas-primary hover:bg-carnitas-primary hover:text-white"
+            className="flex-1 sketch-button bg-white text-carnitas-primary hover:bg-white"
           >
             Customize
           </Button>
@@ -50,7 +50,7 @@ const MenuItemActions = ({
         />
       </Dialog>
       <Button 
-        className="flex-1 bg-carnitas-primary hover:bg-carnitas-secondary"
+        className="flex-1 sketch-button"
         onClick={onAddToCart}
       >
         Add to Cart
