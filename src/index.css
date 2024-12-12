@@ -63,24 +63,22 @@
 
 @layer components {
   .sketch-card {
-    @apply relative bg-white border-2 border-black rounded-lg overflow-hidden;
+    @apply relative bg-white border-2 border-black rounded-lg overflow-hidden transform transition-all duration-300;
     box-shadow: 3px 3px 0 0 theme('colors.carnitas.text');
-    transition: all 0.2s ease;
   }
 
   .sketch-card:hover {
-    transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px) rotate(-1deg);
     box-shadow: 5px 5px 0 0 theme('colors.carnitas.text');
   }
 
   .sketch-button {
-    @apply relative px-6 py-2 bg-carnitas-primary text-white border-2 border-black rounded-md font-handwritten text-lg;
+    @apply relative px-6 py-2 bg-carnitas-primary text-white border-2 border-black rounded-md font-handwritten text-lg transform transition-all duration-300;
     box-shadow: 2px 2px 0 0 theme('colors.carnitas.text');
-    transition: all 0.2s ease;
   }
 
   .sketch-button:hover {
-    transform: translate(-1px, -1px);
+    transform: translate(-1px, -1px) rotate(1deg);
     box-shadow: 3px 3px 0 0 theme('colors.carnitas.text');
   }
 
@@ -91,6 +89,14 @@
 
   .menu-description {
     @apply font-handwritten text-xl text-gray-600;
+  }
+
+  .mexican-pattern-bg {
+    background-color: theme('colors.carnitas.turquoise');
+    background-image: url('/lovable-uploads/778a281d-c66f-42a4-b2ec-c25398a06bde.png');
+    background-size: 400px;
+    background-repeat: repeat;
+    opacity: 0.1;
   }
 }
 

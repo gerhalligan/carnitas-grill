@@ -35,6 +35,8 @@ export default {
           accent: "#E67E22",
           text: "#2C3E50",
           light: "#FDF2E9",
+          turquoise: "#40E0D0",
+          yellow: "#FFD700",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -81,6 +83,10 @@ export default {
         wiggle: {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         }
       },
       animation: {
@@ -88,7 +94,11 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         fadeIn: "fadeIn 0.5s ease-out",
         wiggle: 'wiggle 1s ease-in-out infinite',
+        float: 'float 3s ease-in-out infinite',
       },
+      backgroundImage: {
+        'mexican-pattern': "url('/lovable-uploads/778a281d-c66f-42a4-b2ec-c25398a06bde.png')",
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
