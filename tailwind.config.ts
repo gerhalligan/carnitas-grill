@@ -98,10 +98,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Playfair Display', 'serif'],
-        display: ['Playfair Display', 'serif'],
-        handwritten: ['Playfair Display', 'serif'],
-        sketch: ['Playfair Display', 'serif'],
+        sans: ['Roboto Flex', 'sans-serif'],
+        display: ['Roboto Flex', 'sans-serif'],
+        handwritten: ['Roboto Flex', 'sans-serif'],
+        sketch: ['Roboto Flex', 'sans-serif'],
       },
       colors: themeColors,
       ...animations,
