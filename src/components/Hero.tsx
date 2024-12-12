@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
       <div className="relative z-10 text-center px-4 space-y-8 max-w-4xl mx-auto">
-        <h1 className="font-sans text-6xl md:text-8xl font-extrabold text-carnitas-primary uppercase tracking-tight mb-6 animate-fadeIn drop-shadow-[2px_2px_0_rgba(34,34,34,1)]">
+        <h1 className="menu-title text-6xl md:text-8xl animate-fadeIn">
           Authentic Mexican
           <br />
           <span className="font-handwritten text-carnitas-yellow animate-float inline-block">
