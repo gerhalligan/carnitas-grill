@@ -29,7 +29,7 @@ const MenuSection = () => {
     return (
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-carnitas-text mb-8">
+          <h2 className="menu-title text-center mb-8 border-2 border-white p-4">
             Our Menu
           </h2>
           
@@ -65,7 +65,7 @@ const MenuSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="menu-title text-center mb-8">
+        <h2 className="menu-title text-center mb-8 border-2 border-white p-4">
           Our Menu
         </h2>
         
