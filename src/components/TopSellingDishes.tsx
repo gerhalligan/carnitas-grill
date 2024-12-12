@@ -65,16 +65,16 @@ const TopSellingDishes = () => {
                 <img
                   src={dish.image_url || "/placeholder.svg"}
                   alt={dish.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>
               <CardHeader>
-                <CardTitle className="text-2xl font-handwritten text-carnitas-text">{dish.name}</CardTitle>
-                <CardDescription className="text-lg">{dish.description}</CardDescription>
+                <CardTitle className="text-3xl font-handwritten text-carnitas-text hover:text-gray-700 transition-colors">{dish.name}</CardTitle>
+                <CardDescription className="text-xl hover:text-gray-700 transition-colors">{dish.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-3xl font-bold text-carnitas-primary font-handwritten">€{dish.price.toFixed(2)}</p>
-                <p className="text-lg text-gray-500 mt-2 font-handwritten">Ordered {dish.orders_count} times</p>
+                <p className="text-4xl font-bold text-carnitas-primary font-handwritten hover:text-gray-700 transition-colors">€{dish.price.toFixed(2)}</p>
+                <p className="text-2xl text-gray-500 mt-2 font-handwritten hover:text-gray-700 transition-colors">Ordered {dish.orders_count} times</p>
               </CardContent>
               <CardFooter>
                 <Button 
