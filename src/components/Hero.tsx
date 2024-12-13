@@ -15,7 +15,7 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 space-y-8 max-w-4xl mx-auto">
         <div className="w-full flex justify-center mb-6">
           <img 
-            src="/lovable-uploads/0a953d59-1b40-4f36-b912-70a37e1e987b.png" 
+            src="/lovable-uploads/c92f18d3-e59e-4a5a-8c64-657d4fad9087.png" 
             alt="Authentic Mexican Takeaway" 
             className="w-[70%] animate-fadeIn"
           />
