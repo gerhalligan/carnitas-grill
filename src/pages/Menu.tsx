@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import MenuSection from "@/components/MenuSection";
 import { MenuManagement } from "@/components/MenuManagement";
+import Footer from "@/components/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/contexts/AuthContext";
@@ -28,12 +29,13 @@ const Menu = () => {
   });
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="mt-32">
+      <div className="mt-32 flex-grow">
         <MenuSection />
         {profile?.is_admin && <MenuManagement />}
       </div>
+      <Footer />
     </div>
   );
 };
