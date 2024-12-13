@@ -62,12 +62,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         password,
       });
       if (error) {
-        toast.error(error.message);
+        if (error.message === 'Invalid login credentials') {
+          toast.error("The email or password you entered is incorrect. Please try again.");
+        } else {
+          toast.error(error.message);
+        }
         throw error;
       }
       toast.success('Successfully logged in');
     } catch (error: any) {
-      toast.error(error.message || 'Invalid login credentials');
+      if (error.message === 'Invalid login credentials') {
+        toast.error("The email or password you entered is incorrect. Please try again.");
+      } else {
+        toast.error(error.message || 'An error occurred while signing in');
+      }
       throw error;
     }
   };
