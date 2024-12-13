@@ -18,12 +18,12 @@ const Navbar = () => {
     }`}>
       <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
       <div className="container mx-auto px-4 relative">
-        <div className="flex items-center justify-between h-32">
+        <div className="flex items-center justify-between h-16 md:h-32">
           <Logo />
           <DesktopNav onSearchClick={() => setIsSearchOpen(true)} />
           
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden ml-auto">
             <Button
               variant="ghost"
               size="icon"
