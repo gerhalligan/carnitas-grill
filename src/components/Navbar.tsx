@@ -13,34 +13,32 @@ const Navbar = () => {
   const isVisible = useScroll();
 
   return (
-    <nav className={`fixed top-0 w-full bg-mexican-pattern bg-repeat shadow-lg z-50 transition-transform duration-300 pb-4 ${
+    <nav className={`fixed top-0 w-full bg-carnitas-blackTransparent shadow-lg z-50 transition-transform duration-300 pb-4 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
-      <div className="bg-white/80 backdrop-blur-sm">
-        <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
-        <div className="container mx-auto px-4 relative">
-          <div className="flex items-center justify-between h-32">
-            <Logo />
-            <DesktopNav onSearchClick={() => setIsSearchOpen(true)} />
-            
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:bg-transparent"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                <Menu className="h-6 w-6 text-carnitas-text hover:text-carnitas-primary transition-colors" />
-              </Button>
-            </div>
+      <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
+      <div className="container mx-auto px-4 relative">
+        <div className="flex items-center justify-between h-32">
+          <Logo />
+          <DesktopNav onSearchClick={() => setIsSearchOpen(true)} />
+          
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hover:bg-transparent"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <Menu className="h-6 w-6 text-carnitas-text hover:text-carnitas-primary transition-colors" />
+            </Button>
           </div>
-
-          <MobileNav 
-            isOpen={isMenuOpen}
-            onSearchClick={() => setIsSearchOpen(true)}
-          />
         </div>
+
+        <MobileNav 
+          isOpen={isMenuOpen}
+          onSearchClick={() => setIsSearchOpen(true)}
+        />
       </div>
     </nav>
   );
