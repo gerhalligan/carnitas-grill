@@ -5,7 +5,7 @@ const Logo: FC = () => {
     <div className="flex items-center h-full">
       <a href="/" className="flex items-center h-full py-2">
         <img 
-          src="/lovable-uploads/0a953d59-1b40-4f36-b912-70a37e1e987b.png" 
+          src="/lovable-uploads/0f38bd79-49bc-4af0-822e-8bb1f010f946.png" 
           alt="Carnitas Mexican Fresh Grill" 
           className="h-full w-auto object-contain"
         />
