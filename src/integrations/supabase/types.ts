@@ -45,6 +45,33 @@ export type Database = {
         }
         Relationships: []
       }
+      loyalty_vouchers: {
+        Row: {
+          amount: number
+          created_at: string | null
+          expires_at: string
+          id: string
+          used: boolean | null
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          expires_at: string
+          id?: string
+          used?: boolean | null
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          expires_at?: string
+          id?: string
+          used?: boolean | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       menu_items: {
         Row: {
           available: boolean | null

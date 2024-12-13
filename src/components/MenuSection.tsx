@@ -1,9 +1,12 @@
 import { useMenuItems } from "@/hooks/use-menu-items";
 import MenuItem from "./MenuItem";
 import { Skeleton } from "@/components/ui/skeleton";
+import { VouchersDisplay } from "./menu/VouchersDisplay";
+import { useAuth } from "@/contexts/AuthContext";
 
 const MenuSection = () => {
   const { data: menuItems, isLoading } = useMenuItems();
+  const { user } = useAuth();
 
   // Group menu items by section and then by category
   const groupedMenuItems = menuItems?.reduce((acc, item) => {
@@ -49,6 +52,7 @@ const MenuSection = () => {
   return (
     <section className="py-16 bg-mexican-pattern bg-repeat min-h-screen">
       <div className="container mx-auto px-4 bg-white/80 rounded-lg shadow-lg py-8">
+        {user && <VouchersDisplay />}
         <h2 className="menu-title text-center mb-12">
           Our Menu
         </h2>
