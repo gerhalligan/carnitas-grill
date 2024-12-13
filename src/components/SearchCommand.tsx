@@ -156,7 +156,7 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
                       <Button 
                         size="sm"
                         onClick={(e) => handleAddToCart(item, e)}
-                        className="bg-carnitas-primary hover:bg-carnitas-secondary w-full md:w-auto"
+                        className="bg-carnitas-yellow text-carnitas-text hover:bg-yellow-400 w-full md:w-auto"
                       >
                         Add to Cart
                       </Button>
