@@ -9,6 +9,13 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import CustomizeDialog from "./menu/CustomizeDialog";
 import MenuItemDetails from "./menu/MenuItemDetails";
 
+const defaultIngredients = [
+  { id: "1", name: "Lettuce" },
+  { id: "2", name: "Tomatoes" },
+  { id: "3", name: "Onions" },
+  { id: "4", name: "Cilantro" },
+];
+
 const TopSellingDishes = () => {
   const { data: dishes, isLoading } = useTopSelling();
   const { addItem } = useCart();
@@ -28,8 +35,9 @@ const TopSellingDishes = () => {
   const handleAddToCart = () => {
     if (!currentDish) return;
 
-    const removedIngredients = currentDish.ingredients
-      ?.filter((ing: any) => !selectedIngredients.includes(ing.id))
+    const dishIngredients = currentDish.ingredients || defaultIngredients;
+    const removedIngredients = dishIngredients
+      .filter((ing: any) => !selectedIngredients.includes(ing.id))
       .map((ing: any) => ing.name);
 
     const customizations = {
@@ -42,7 +50,7 @@ const TopSellingDishes = () => {
       price: currentDish.price,
       category: currentDish.category,
       customizations: Object.keys(customizations).length > 0 ? customizations : undefined,
-      ingredients: currentDish.ingredients
+      ingredients: dishIngredients
     });
 
     if (removedIngredients?.length > 0) {
@@ -114,7 +122,8 @@ const TopSellingDishes = () => {
                       setIsCustomizing(open);
                       if (open) {
                         setCurrentDish(dish);
-                        setSelectedIngredients(dish.ingredients?.map((ing: any) => ing.id) || []);
+                        const ingredients = dish.ingredients || defaultIngredients;
+                        setSelectedIngredients(ingredients.map(ing => ing.id));
                       }
                     }}
                   >
@@ -127,7 +136,7 @@ const TopSellingDishes = () => {
                     </DialogTrigger>
                     <CustomizeDialog
                       itemName={dish.name}
-                      ingredients={dish.ingredients || []}
+                      ingredients={dish.ingredients || defaultIngredients}
                       selectedIngredients={selectedIngredients}
                       onIngredientToggle={handleIngredientToggle}
                       notes={notes}

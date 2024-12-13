@@ -12,6 +12,7 @@ export interface MenuItem {
   available: boolean;
   section: string;
   item_code?: string;
+  ingredients?: { id: string; name: string; }[];
 }
 
 export function useMenuItems() {
