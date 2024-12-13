@@ -18,23 +18,13 @@ const Footer = () => {
             <h4 className="text-xl font-sketch text-white mb-4">Quick Links</h4>
             <ul className="space-y-2 font-handwritten text-xl">
               <li>
+                <a href="/" className="text-gray-300 hover:text-carnitas-yellow transition-colors">
+                  Home
+                </a>
+              </li>
+              <li>
                 <a href="/menu" className="text-gray-300 hover:text-carnitas-yellow transition-colors">
                   Menu
-                </a>
-              </li>
-              <li>
-                <a href="/locations" className="text-gray-300 hover:text-carnitas-yellow transition-colors">
-                  Locations
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="text-gray-300 hover:text-carnitas-yellow transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-gray-300 hover:text-carnitas-yellow transition-colors">
-                  Contact
                 </a>
               </li>
             </ul>
