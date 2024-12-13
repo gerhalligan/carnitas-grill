@@ -22,8 +22,13 @@ const MenuSection = () => {
 
   if (isLoading) {
     return (
-      <section className="pt-48 pb-16 bg-mexican-pattern bg-repeat min-h-screen">
-        <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg">
+      <section className="pt-48 pb-16 bg-mexican-pattern bg-repeat min-h-screen relative">
+        <img 
+          src="/lovable-uploads/01931afb-b9ee-4af4-9198-bcf355268898.png"
+          alt="Carnitas Mexican Fresh Grill"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-auto opacity-10"
+        />
+        <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg relative z-10">
           <h2 className="text-4xl font-bold text-center text-white mb-8">
             Our Menu
           </h2>
@@ -34,8 +39,13 @@ const MenuSection = () => {
   }
 
   return (
-    <section className="pt-48 pb-16 bg-mexican-pattern bg-repeat min-h-screen">
-      <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg">
+    <section className="pt-48 pb-16 bg-mexican-pattern bg-repeat min-h-screen relative">
+      <img 
+        src="/lovable-uploads/01931afb-b9ee-4af4-9198-bcf355268898.png"
+        alt="Carnitas Mexican Fresh Grill"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-auto opacity-10"
+      />
+      <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg relative z-10">
         {user && <VouchersDisplay />}
         <h2 className="menu-title text-center mb-12 text-white">
           Our Menu
