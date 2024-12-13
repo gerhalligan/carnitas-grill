@@ -13,13 +13,13 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
       <div className="relative z-10 text-center px-4 space-y-8 max-w-4xl mx-auto">
-        <h1 className="font-sans text-6xl md:text-8xl font-extrabold text-carnitas-primary uppercase tracking-tight mb-6 animate-fadeIn drop-shadow-[2px_2px_0_rgba(34,34,34,1)] [text-shadow:_-1px_-1px_0_#fff,_1px_-1px_0_#fff,_-1px_1px_0_#fff,_1px_1px_0_#fff]">
-          Authentic Mexican
-          <br />
-          <span className="font-handwritten text-carnitas-yellow animate-float inline-block">
-            Street food
-          </span>
-        </h1>
+        <div className="w-full flex justify-center mb-6">
+          <img 
+            src="/lovable-uploads/f570ddc1-734b-4223-81bb-cd9b0c9e1d6a.png" 
+            alt="Authentic Mexican Takeaway" 
+            className="w-[500px] md:w-[600px] animate-fadeIn"
+          />
+        </div>
         <p className="font-handwritten text-3xl text-white mb-8 animate-fadeIn drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
           Experience the true flavors of Mexico with our handcrafted tacos, burritos, and more
         </p>
