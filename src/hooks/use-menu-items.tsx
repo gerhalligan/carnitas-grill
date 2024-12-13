@@ -10,6 +10,7 @@ export interface MenuItem {
   category: MenuCategory;
   image_url: string | null;
   available: boolean;
+  section: string;
 }
 
 export function useMenuItems() {
@@ -20,6 +21,7 @@ export function useMenuItems() {
         .from("menu_items")
         .select("*")
         .eq("available", true)
+        .order("section")
         .order("category");
 
       if (error) {

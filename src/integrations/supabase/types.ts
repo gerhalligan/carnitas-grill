@@ -55,9 +55,11 @@ export type Database = {
           id: string
           image_url: string | null
           ingredients: Json | null
+          item_code: string | null
           name: string
           orders_count: number | null
           price: number
+          section: string
         }
         Insert: {
           available?: boolean | null
@@ -68,9 +70,11 @@ export type Database = {
           id?: string
           image_url?: string | null
           ingredients?: Json | null
+          item_code?: string | null
           name: string
           orders_count?: number | null
           price: number
+          section?: string
         }
         Update: {
           available?: boolean | null
@@ -81,9 +85,11 @@ export type Database = {
           id?: string
           image_url?: string | null
           ingredients?: Json | null
+          item_code?: string | null
           name?: string
           orders_count?: number | null
           price?: number
+          section?: string
         }
         Relationships: []
       }
