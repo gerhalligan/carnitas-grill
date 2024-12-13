@@ -118,7 +118,11 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
   };
 
   return (
-    <CommandDialog open={open} onOpenChange={onOpenChange} className="max-w-3xl">
+    <CommandDialog 
+      open={open} 
+      onOpenChange={onOpenChange} 
+      className="max-w-3xl md:w-full w-[90vw] mx-auto"
+    >
       <CommandInput placeholder="Search menu items..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -128,37 +132,37 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
               key={item.name}
               value={item.name}
               onSelect={() => handleSelect(item)}
-              className="flex items-center space-x-4 p-2"
+              className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4 p-4"
             >
               <img 
                 src={item.image} 
                 alt={item.name} 
-                className="w-16 h-16 object-cover rounded-md"
+                className="w-full md:w-16 h-48 md:h-16 object-cover rounded-md"
               />
-              <div className="flex-1">
-                <div className="flex justify-between items-start">
-                  <div>
+              <div className="flex-1 w-full">
+                <div className="flex flex-col md:flex-row justify-between items-start w-full">
+                  <div className="space-y-2 w-full md:w-auto">
                     <p className="font-medium">{item.name}</p>
                     <p className="text-sm text-muted-foreground">{item.description}</p>
-                    <div className="flex gap-2 mt-2">
+                    <div className="flex flex-col md:flex-row gap-2 mt-2">
                       <Button 
                         variant="outline" 
                         size="sm"
                         onClick={(e) => handleSelect(item)}
-                        className="text-carnitas-primary border-carnitas-primary hover:bg-carnitas-primary hover:text-white"
+                        className="text-carnitas-primary border-carnitas-primary hover:bg-carnitas-primary hover:text-white w-full md:w-auto"
                       >
                         View Item
                       </Button>
                       <Button 
                         size="sm"
                         onClick={(e) => handleAddToCart(item, e)}
-                        className="bg-carnitas-primary hover:bg-carnitas-secondary"
+                        className="bg-carnitas-primary hover:bg-carnitas-secondary w-full md:w-auto"
                       >
                         Add to Cart
                       </Button>
                     </div>
                   </div>
-                  <span className="text-carnitas-primary font-bold">€{item.price}</span>
+                  <span className="text-carnitas-primary font-bold mt-2 md:mt-0">€{item.price}</span>
                 </div>
               </div>
             </CommandItem>
