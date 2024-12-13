@@ -2,11 +2,10 @@ import { useVouchers } from "@/hooks/use-vouchers";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { Ticket } from "lucide-react";
+import { Star } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/contexts/AuthContext";
-import { Progress } from "@/components/ui/progress";
 
 export function VouchersDisplay() {
   const { data: vouchers, isLoading: vouchersLoading } = useVouchers();
@@ -29,28 +28,39 @@ export function VouchersDisplay() {
 
   if (vouchersLoading || ordersLoading) return null;
 
-  const ordersUntilNextVoucher = 10 - (orderCount || 0) % 10;
-  const progress = ((orderCount || 0) % 10) * 10;
+  const completedOrders = (orderCount || 0) % 10;
+  const ordersUntilNextVoucher = 10 - completedOrders;
 
   return (
-    <div className="mb-8">
+    <div className="max-w-2xl mx-auto mb-8">
       <div className="flex items-center gap-2 mb-4">
-        <Ticket className="h-5 w-5 text-carnitas-primary" />
+        <Star className="h-5 w-5 text-carnitas-primary" />
         <h3 className="text-lg font-semibold text-carnitas-text">Your Loyalty Rewards</h3>
       </div>
 
       <Card className="p-4 bg-white/90 border border-carnitas-primary mb-4">
-        <p className="text-sm text-gray-600 mb-2">Progress to next voucher:</p>
-        <div className="space-y-2">
-          <Progress value={progress} className="h-2" />
-          <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 mb-3">Progress to next voucher:</p>
+        <div className="space-y-3">
+          <div className="flex justify-center gap-1">
+            {[...Array(10)].map((_, index) => (
+              <Star
+                key={index}
+                className={`h-6 w-6 transition-colors ${
+                  index < completedOrders
+                    ? 'fill-carnitas-yellow text-carnitas-yellow'
+                    : 'text-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+          <p className="text-sm text-gray-600 text-center">
             {ordersUntilNextVoucher} more order{ordersUntilNextVoucher !== 1 ? 's' : ''} until your next loyalty voucher
           </p>
         </div>
       </Card>
 
       {vouchers?.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {vouchers.map((voucher) => (
             <Card key={voucher.id} className="p-4 bg-white/90 border-2 border-carnitas-primary">
               <div className="flex justify-between items-start mb-2">
