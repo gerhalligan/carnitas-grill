@@ -22,7 +22,7 @@ const MenuSection = () => {
 
   if (isLoading) {
     return (
-      <section className="pt-48 pb-24 bg-mexican-pattern bg-cover bg-center min-h-screen relative">
+      <section className="pt-48 pb-24 bg-mexican-pattern bg-cover bg-center min-h-screen relative before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-30">
         <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg relative z-10">
           <h2 className="text-4xl font-bold text-center text-white mb-8">
             Our Menu
@@ -34,7 +34,7 @@ const MenuSection = () => {
   }
 
   return (
-    <section className="pt-48 pb-24 bg-mexican-pattern bg-cover bg-center min-h-screen relative">
+    <section className="pt-48 pb-24 bg-mexican-pattern bg-cover bg-center min-h-screen relative before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-30">
       <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg relative z-10">
         {user && <VouchersDisplay />}
         <h2 className="menu-title text-center mb-12 text-white">
