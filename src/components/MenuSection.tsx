@@ -26,7 +26,7 @@ const MenuSection = () => {
         <img 
           src="/lovable-uploads/01931afb-b9ee-4af4-9198-bcf355268898.png"
           alt="Carnitas Mexican Fresh Grill"
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto"
+          className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[40%] h-auto"
         />
         <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg relative z-10">
           <h2 className="text-4xl font-bold text-center text-white mb-8">
@@ -43,7 +43,7 @@ const MenuSection = () => {
       <img 
         src="/lovable-uploads/01931afb-b9ee-4af4-9198-bcf355268898.png"
         alt="Carnitas Mexican Fresh Grill"
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto"
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[40%] h-auto"
       />
       <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg relative z-10">
         {user && <VouchersDisplay />}
