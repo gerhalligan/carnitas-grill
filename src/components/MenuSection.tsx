@@ -22,7 +22,7 @@ const MenuSection = () => {
 
   if (isLoading) {
     return (
-      <section className="py-16 bg-white">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center text-carnitas-text mb-8">
             Our Menu
@@ -50,9 +50,9 @@ const MenuSection = () => {
   }
 
   return (
-    <section className="bg-mexican-pattern bg-repeat min-h-screen pt-32">
-      <div className="container mx-auto px-4">
-        <div className="bg-white/80 rounded-lg shadow-lg py-8">
+    <main className="min-h-screen bg-mexican-pattern bg-repeat">
+      <div className="container mx-auto px-4 pt-32">
+        <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-lg py-8">
           {user && <VouchersDisplay />}
           <h2 className="menu-title text-center mb-12">
             Our Menu
@@ -95,7 +95,7 @@ const MenuSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 
