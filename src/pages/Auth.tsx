@@ -19,7 +19,7 @@ const AuthPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <div className="max-w-md mx-auto pt-32 px-4">
+      <div className="max-w-md mx-auto pt-48 px-4">
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
             Admin Login
