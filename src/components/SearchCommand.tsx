@@ -149,7 +149,7 @@ export function SearchCommand({ open, onOpenChange }: SearchCommandProps) {
                         variant="outline" 
                         size="sm"
                         onClick={(e) => handleSelect(item)}
-                        className="text-carnitas-primary border-carnitas-primary hover:bg-carnitas-primary hover:text-white w-full md:w-auto"
+                        className="text-carnitas-text border-carnitas-yellow hover:bg-carnitas-yellow hover:text-carnitas-text w-full md:w-auto"
                       >
                         View Item
                       </Button>
