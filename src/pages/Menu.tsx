@@ -31,7 +31,7 @@ const Menu = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="mt-32 flex-grow">
+      <div className="flex-grow">
         <MenuSection />
         {profile?.is_admin && <MenuManagement />}
       </div>
