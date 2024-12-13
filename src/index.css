@@ -83,8 +83,8 @@
   }
 
   .menu-title {
-    @apply font-display text-5xl font-extrabold text-carnitas-primary uppercase tracking-tight relative inline-block;
-    text-shadow: 2px 2px 0 theme('colors.carnitas.text');
+    @apply font-display text-5xl font-extrabold text-white uppercase tracking-tight relative inline-block;
+    text-shadow: 2px 2px 0 theme('colors.carnitas.primary');
   }
 
   .menu-description {
