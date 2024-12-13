@@ -11,6 +11,7 @@ export interface MenuItem {
   image_url: string | null;
   available: boolean;
   section: string;
+  item_code?: string;
 }
 
 export function useMenuItems() {
