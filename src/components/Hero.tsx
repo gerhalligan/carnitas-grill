@@ -17,7 +17,7 @@ const Hero = () => {
           <img 
             src="/lovable-uploads/0a953d59-1b40-4f36-b912-70a37e1e987b.png" 
             alt="Authentic Mexican Takeaway" 
-            className="w-[100%] animate-fadeIn"
+            className="w-[70%] animate-fadeIn"
           />
         </div>
         <p className="font-handwritten text-3xl text-white mb-8 animate-fadeIn drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
