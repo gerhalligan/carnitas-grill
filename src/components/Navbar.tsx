@@ -30,7 +30,7 @@ const Navbar = () => {
               className="hover:bg-transparent"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <Menu className="h-6 w-6 text-carnitas-text hover:text-carnitas-primary transition-colors" />
+              <Menu className="h-6 w-6 text-white hover:text-carnitas-primary transition-colors" />
             </Button>
           </div>
         </div>
