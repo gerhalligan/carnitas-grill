@@ -13,7 +13,7 @@ const Navbar = () => {
   const isVisible = useScroll();
 
   return (
-    <nav className={`fixed top-0 w-full bg-carnitas-blackTransparent shadow-lg z-50 transition-transform duration-300 pb-4 ${
+    <nav className={`fixed top-0 w-full bg-carnitas-blackTransparent shadow-lg z-50 transition-transform duration-300 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
       <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
