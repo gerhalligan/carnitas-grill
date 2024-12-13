@@ -30,7 +30,7 @@ const AuthPage = () => {
       await signIn(email, password);
       navigate("/menu");
     } catch (error: any) {
-      // Error is already handled by AuthContext with toast
+      setError("The email or password you entered is incorrect. Please try again.");
       setIsLoading(false);
     }
   };
@@ -48,6 +48,12 @@ const AuthPage = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <Alert variant="destructive">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+            
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm text-gray-700">
                 Email address
