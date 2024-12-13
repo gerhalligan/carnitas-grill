@@ -21,7 +21,7 @@ export const Cart = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="relative"
+          className="relative !hover:bg-transparent !hover:text-white"
           aria-label="Shopping Cart"
         >
           <ShoppingCart className="h-6 w-6 text-white" />
