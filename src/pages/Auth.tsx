@@ -22,10 +22,10 @@ const AuthPage = () => {
       <div className="max-w-md mx-auto pt-48 px-4">
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-            Admin Login
+            Welcome Back
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            Please sign in to access the menu management system
+            Sign in to your account to view orders and earn rewards
           </p>
           <Auth
             supabaseClient={supabase}
