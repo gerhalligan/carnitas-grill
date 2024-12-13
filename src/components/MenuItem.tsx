@@ -6,6 +6,8 @@ import { toast } from "sonner";
 import MenuItemDetails from "./menu/MenuItemDetails";
 import MenuItemActions from "./menu/MenuItemActions";
 import { Plus } from "lucide-react";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import CustomizeDialog from "./menu/CustomizeDialog";
 
 interface MenuItemProps {
   name: string;
@@ -91,12 +93,24 @@ const MenuItem = ({
             alt={name}
             className="w-full h-full object-cover rounded-lg"
           />
-          <button
-            onClick={handleAddToCart}
-            className="absolute -bottom-3 -right-3 w-10 h-10 bg-[#10151b] rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
-          >
-            <Plus className="w-5 h-5" />
-          </button>
+          <Dialog open={isCustomizing} onOpenChange={setIsCustomizing}>
+            <DialogTrigger asChild>
+              <button
+                className="absolute -bottom-3 -right-3 w-10 h-10 bg-[#10151b] rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+              >
+                <Plus className="w-5 h-5" />
+              </button>
+            </DialogTrigger>
+            <CustomizeDialog
+              itemName={name}
+              ingredients={ingredients}
+              selectedIngredients={selectedIngredients}
+              onIngredientToggle={handleIngredientToggle}
+              notes={notes}
+              onNotesChange={setNotes}
+              onComplete={handleAddToCart}
+            />
+          </Dialog>
         </div>
       </div>
     </Card>
