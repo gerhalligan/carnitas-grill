@@ -66,7 +66,10 @@ const CustomizeDialog = ({
         </div>
       </div>
       <DialogFooter>
-        <Button onClick={onComplete} className="sketch-button">
+        <Button 
+          onClick={onComplete} 
+          className="sketch-button bg-carnitas-yellow text-carnitas-text hover:bg-yellow-400 text-lg font-handwritten"
+        >
           Add to Cart
         </Button>
       </DialogFooter>
