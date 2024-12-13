@@ -8,7 +8,7 @@ const themeColors = {
     text: "#222222",
     light: "#FDF2E9",
     turquoise: "#40E0D0",
-    yellow: "#FFD700",
+    yellow: "#FAA002",
     darkGreyTransparent: "rgba(50, 50, 50, 0.6)",
     blackTransparent: "rgba(0, 0, 0, 0.6)",
   },
