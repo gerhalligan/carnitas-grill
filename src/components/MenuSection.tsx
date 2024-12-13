@@ -22,7 +22,7 @@ const MenuSection = () => {
 
   if (isLoading) {
     return (
-      <section className="pt-48 pb-16 bg-mexican-pattern bg-repeat min-h-screen relative">
+      <section className="pt-16 pb-16 bg-mexican-pattern bg-repeat min-h-screen relative">
         <img 
           src="/lovable-uploads/01931afb-b9ee-4af4-9198-bcf355268898.png"
           alt="Carnitas Mexican Fresh Grill"
@@ -39,7 +39,7 @@ const MenuSection = () => {
   }
 
   return (
-    <section className="pt-48 pb-16 bg-mexican-pattern bg-repeat min-h-screen relative">
+    <section className="pt-16 pb-16 bg-mexican-pattern bg-repeat min-h-screen relative">
       <img 
         src="/lovable-uploads/01931afb-b9ee-4af4-9198-bcf355268898.png"
         alt="Carnitas Mexican Fresh Grill"
