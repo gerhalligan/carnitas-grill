@@ -11,10 +11,7 @@ const MobileNav: FC<MobileNavProps> = ({ isOpen, onSearchClick }) => {
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="md:hidden py-6 animate-fadeIn"
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}
-    >
+    <div className="md:hidden py-6 animate-fadeIn">
       <div className="flex flex-col space-y-6">
         <NavLinks className="block" />
         <NavActions 
