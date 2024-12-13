@@ -8,6 +8,7 @@ import { Plus } from "lucide-react";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import CustomizeDialog from "./menu/CustomizeDialog";
 import MenuItemDetails from "./menu/MenuItemDetails";
+import { MenuItem } from "@/hooks/use-menu-items";
 
 const defaultIngredients = [
   { id: "1", name: "Lettuce" },
@@ -20,7 +21,7 @@ const TopSellingDishes = () => {
   const { data: dishes, isLoading } = useTopSelling();
   const { addItem } = useCart();
   const [isCustomizing, setIsCustomizing] = useState(false);
-  const [currentDish, setCurrentDish] = useState<any>(null);
+  const [currentDish, setCurrentDish] = useState<MenuItem | null>(null);
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
   const [notes, setNotes] = useState("");
 
@@ -37,11 +38,11 @@ const TopSellingDishes = () => {
 
     const dishIngredients = currentDish.ingredients || defaultIngredients;
     const removedIngredients = dishIngredients
-      .filter((ing: any) => !selectedIngredients.includes(ing.id))
-      .map((ing: any) => ing.name);
+      .filter((ing) => !selectedIngredients.includes(ing.id))
+      .map((ing) => ing.name);
 
     const customizations = {
-      ...(removedIngredients?.length > 0 && { removedIngredients }),
+      ...(removedIngredients.length > 0 && { removedIngredients }),
       ...(notes && { notes })
     };
 
@@ -53,7 +54,7 @@ const TopSellingDishes = () => {
       ingredients: dishIngredients
     });
 
-    if (removedIngredients?.length > 0) {
+    if (removedIngredients.length > 0) {
       toast.success(`Added ${currentDish.name} to cart without ${removedIngredients.join(', ')}`);
     } else {
       toast.success(`Added ${currentDish.name} to cart`);
