@@ -48,7 +48,7 @@ const MenuSection = () => {
 
   return (
     <section className="py-16 bg-mexican-pattern bg-repeat min-h-screen">
-      <div className="container mx-auto px-4 bg-white/95 rounded-lg shadow-lg py-8">
+      <div className="container mx-auto px-4 bg-white/80 rounded-lg shadow-lg py-8">
         <h2 className="menu-title text-center mb-12">
           Our Menu
         </h2>
