@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/contexts/AuthContext";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import OrderHistory from "@/components/OrderHistory";
+import { VouchersDisplay } from "@/components/menu/VouchersDisplay";
 
 const Menu = () => {
   const { user } = useAuth();
@@ -28,12 +31,49 @@ const Menu = () => {
     enabled: !!user?.id,
   });
 
+  const isStaff = profile?.role === 'admin' || profile?.role === 'manager';
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex-grow">
-        <MenuSection />
-        {profile?.is_admin && <MenuManagement />}
+        {user && isStaff ? (
+          <Tabs defaultValue="menu" className="w-full pt-48">
+            <div className="container mx-auto px-4">
+              <TabsList className="mb-8">
+                <TabsTrigger value="menu">Menu</TabsTrigger>
+                <TabsTrigger value="management">Menu Management</TabsTrigger>
+              </TabsList>
+              <TabsContent value="menu">
+                <MenuSection />
+              </TabsContent>
+              <TabsContent value="management">
+                <MenuManagement />
+              </TabsContent>
+            </div>
+          </Tabs>
+        ) : user ? (
+          <Tabs defaultValue="menu" className="w-full pt-48">
+            <div className="container mx-auto px-4">
+              <TabsList className="mb-8">
+                <TabsTrigger value="menu">Menu</TabsTrigger>
+                <TabsTrigger value="orders">Order History</TabsTrigger>
+                <TabsTrigger value="rewards">Rewards</TabsTrigger>
+              </TabsList>
+              <TabsContent value="menu">
+                <MenuSection />
+              </TabsContent>
+              <TabsContent value="orders">
+                <OrderHistory />
+              </TabsContent>
+              <TabsContent value="rewards">
+                <VouchersDisplay />
+              </TabsContent>
+            </div>
+          </Tabs>
+        ) : (
+          <MenuSection />
+        )}
       </div>
       <Footer />
     </div>
