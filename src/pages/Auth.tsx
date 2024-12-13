@@ -8,13 +8,13 @@ import Navbar from "@/components/Navbar";
 
 const AuthPage = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, session } = useAuth();
 
   useEffect(() => {
-    if (user) {
+    if (session || user) {
       navigate("/menu");
     }
-  }, [user, navigate]);
+  }, [user, session, navigate]);
 
   return (
     <div className="min-h-screen bg-gray-50">
