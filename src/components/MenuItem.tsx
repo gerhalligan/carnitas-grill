@@ -5,6 +5,7 @@ import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import MenuItemDetails from "./menu/MenuItemDetails";
 import MenuItemActions from "./menu/MenuItemActions";
+import { Plus } from "lucide-react";
 
 interface MenuItemProps {
   name: string;
@@ -12,6 +13,7 @@ interface MenuItemProps {
   price: number;
   image: string;
   category: MenuCategory;
+  itemCode?: string;
   ingredients?: { id: string; name: string; }[];
 }
 
@@ -21,6 +23,7 @@ const MenuItem = ({
   price, 
   image, 
   category,
+  itemCode,
   ingredients = [
     { id: "1", name: "Lettuce" },
     { id: "2", name: "Tomatoes" },
@@ -72,33 +75,30 @@ const MenuItem = ({
   };
 
   return (
-    <Card className="sketch-card group">
-      <div className="h-48 overflow-hidden">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+    <Card className="relative border border-gray-200 rounded-lg overflow-hidden bg-white">
+      <div className="flex justify-between p-6">
+        <div className="flex-1">
+          <MenuItemDetails
+            name={name}
+            description={description}
+            price={price}
+            itemCode={itemCode}
+          />
+        </div>
+        <div className="w-24 h-24 relative ml-4">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover rounded-lg"
+          />
+          <button
+            onClick={handleAddToCart}
+            className="absolute -bottom-3 -right-3 w-10 h-10 bg-[#10151b] rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+          >
+            <Plus className="w-5 h-5" />
+          </button>
+        </div>
       </div>
-      <MenuItemDetails
-        name={name}
-        description={description}
-        price={price}
-      />
-      <CardFooter>
-        <MenuItemActions
-          name={name}
-          ingredients={ingredients}
-          isCustomizing={isCustomizing}
-          selectedIngredients={selectedIngredients}
-          notes={notes}
-          onCustomizeClick={() => setIsCustomizing(true)}
-          onCustomizeClose={() => setIsCustomizing(false)}
-          onIngredientToggle={handleIngredientToggle}
-          onNotesChange={setNotes}
-          onAddToCart={handleAddToCart}
-        />
-      </CardFooter>
     </Card>
   );
 };

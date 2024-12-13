@@ -4,21 +4,22 @@ interface MenuItemDetailsProps {
   name: string;
   description: string;
   price: number;
+  itemCode?: string;
 }
 
-const MenuItemDetails = ({ name, description, price }: MenuItemDetailsProps) => {
+const MenuItemDetails = ({ name, description, price, itemCode }: MenuItemDetailsProps) => {
   return (
-    <>
-      <CardHeader>
-        <CardTitle className="font-sketch text-xl text-carnitas-text">{name}</CardTitle>
-        <CardDescription className="font-handwritten text-lg">{description}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="font-handwritten text-2xl font-bold text-carnitas-primary">
-          €{price.toFixed(2)}
-        </p>
-      </CardContent>
-    </>
+    <div className="space-y-2">
+      <h3 className="text-xl font-semibold text-[#10151b]">
+        {itemCode && <span className="font-normal">{itemCode}. </span>}
+        {name}
+      </h3>
+      <p className="text-gray-600 text-sm line-clamp-2">{description}</p>
+      <div className="mt-4">
+        <span className="text-xs text-gray-500 block">FROM</span>
+        <span className="text-lg font-semibold">€{price.toFixed(2)}</span>
+      </div>
+    </div>
   );
 };
 

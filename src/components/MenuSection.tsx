@@ -56,16 +56,21 @@ const MenuSection = () => {
         <div className="space-y-16">
           {groupedMenuItems && Object.entries(groupedMenuItems).map(([section, categories]) => (
             <div key={section} className="space-y-8" id={section}>
-              <h3 className="text-3xl font-bold text-carnitas-primary border-b-2 border-carnitas-primary pb-2">
-                {section}
-              </h3>
+              <div className="border-b border-gray-200 pb-4">
+                <h3 className="text-2xl font-bold text-[#10151b]">
+                  {section}
+                </h3>
+                {section === 'Curries' && (
+                  <p className="text-gray-600 mt-2">All Curries are Gluten Free & Dairy Free.</p>
+                )}
+              </div>
               
               {Object.entries(categories).map(([category, items]) => (
                 <div key={category} className="space-y-6">
-                  <h4 className="text-2xl font-semibold text-carnitas-text">
+                  <h4 className="text-xl font-semibold text-[#10151b] mb-4">
                     {category}
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {items.map((item) => (
                       <MenuItem
                         key={item.id}
@@ -74,6 +79,7 @@ const MenuSection = () => {
                         price={item.price}
                         image={item.image_url || "/placeholder.svg"}
                         category={item.category}
+                        itemCode={item.item_code}
                       />
                     ))}
                   </div>
