@@ -8,7 +8,6 @@ const MenuSection = () => {
   const { data: menuItems, isLoading } = useMenuItems();
   const { user } = useAuth();
 
-  // Group menu items by section and then by category
   const groupedMenuItems = menuItems?.reduce((acc, item) => {
     if (!acc[item.section]) {
       acc[item.section] = {};
@@ -23,8 +22,8 @@ const MenuSection = () => {
   if (isLoading) {
     return (
       <section className="pt-48 pb-16 bg-mexican-pattern bg-repeat min-h-screen">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-carnitas-text mb-8">
+        <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg">
+          <h2 className="text-4xl font-bold text-center text-white mb-8">
             Our Menu
           </h2>
           <div className="space-y-12">
@@ -51,9 +50,9 @@ const MenuSection = () => {
 
   return (
     <section className="pt-48 pb-16 bg-mexican-pattern bg-repeat min-h-screen">
-      <div className="container mx-auto px-4 bg-white/80 rounded-lg shadow-lg py-8">
+      <div className="container mx-auto px-8 py-12 bg-carnitas-blackTransparent rounded-lg shadow-lg">
         {user && <VouchersDisplay />}
-        <h2 className="menu-title text-center mb-12">
+        <h2 className="menu-title text-center mb-12 text-white">
           Our Menu
         </h2>
         
@@ -61,17 +60,17 @@ const MenuSection = () => {
           {groupedMenuItems && Object.entries(groupedMenuItems).map(([section, categories]) => (
             <div key={section} className="space-y-8" id={section}>
               <div className="border-b border-gray-200 pb-4">
-                <h3 className="text-2xl font-bold text-[#10151b]">
+                <h3 className="text-2xl font-bold text-white">
                   {section}
                 </h3>
                 {section === 'Curries' && (
-                  <p className="text-gray-600 mt-2">All Curries are Gluten Free & Dairy Free.</p>
+                  <p className="text-gray-200 mt-2">All Curries are Gluten Free & Dairy Free.</p>
                 )}
               </div>
               
               {Object.entries(categories).map(([category, items]) => (
                 <div key={category} className="space-y-6">
-                  <h4 className="text-xl font-semibold text-[#10151b] mb-4">
+                  <h4 className="text-xl font-semibold text-white mb-4">
                     {category}
                   </h4>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
