@@ -106,7 +106,7 @@ export default {
       colors: themeColors,
       ...animations,
       backgroundImage: {
-        'mexican-pattern': "url('/lovable-uploads/778a281d-c66f-42a4-b2ec-c25398a06bde.png')",
+        'mexican-pattern': "url('/lovable-uploads/48a433ce-f5a4-4639-8d6e-a495f29066b1.png')",
       }
     },
   },
