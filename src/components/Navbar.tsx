@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <>
       <div className="h-16 md:h-32" /> {/* Spacer div to prevent content from being hidden under fixed navbar */}
-      <nav className={`fixed top-0 w-full bg-carnitas-blackTransparent shadow-lg z-50 transition-transform duration-300 ${
+      <nav className={`fixed top-0 w-full bg-black/70 shadow-lg z-50 transition-transform duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}>
         <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />

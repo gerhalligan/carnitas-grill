@@ -10,7 +10,7 @@ const themeColors = {
     turquoise: "#40E0D0",
     yellow: "#FAA002",
     darkGreyTransparent: "rgba(50, 50, 50, 0.6)",
-    blackTransparent: "rgba(0, 0, 0, 0.6)",
+    blackTransparent: "rgba(0, 0, 0, 0.7)", // Updated to 70% transparency
   },
   border: "hsl(var(--border))",
   input: "hsl(var(--input))",
