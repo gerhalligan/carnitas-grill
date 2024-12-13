@@ -13,9 +13,12 @@ const Navbar = () => {
   const isVisible = useScroll();
 
   return (
-    <nav className={`absolute top-0 left-0 right-0 w-full bg-black/70 shadow-lg z-50 transition-transform duration-300 ${
-      isVisible ? 'translate-y-0' : '-translate-y-full'
-    }`}>
+    <nav 
+      className={`absolute top-0 left-0 right-0 w-full !bg-black/70 shadow-lg z-50 transition-transform duration-300 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+      style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}
+    >
       <SearchCommand open={isSearchOpen} onOpenChange={setIsSearchOpen} />
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between h-16 md:h-32">
