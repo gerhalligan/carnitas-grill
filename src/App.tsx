@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { CartProvider } from "@/contexts/CartContext";
 import Index from "./pages/Index";
 import Menu from "./pages/Menu";
+import OurMenu from "./pages/OurMenu";
 import Auth from "./pages/Auth";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/menu" element={<Menu />} />
+                <Route path="/our-menu" element={<OurMenu />} />
                 <Route path="/auth" element={<Auth />} />
               </Routes>
             </BrowserRouter>
