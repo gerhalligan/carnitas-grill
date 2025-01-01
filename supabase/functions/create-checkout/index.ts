@@ -8,9 +8,9 @@ serve(async (req) => {
   }
 
   try {
-    const { items, user_id } = await req.json();
+    const { cartItems, user_id } = await req.json();
 
-    const lineItems = items.map((item: any) => ({
+    const lineItems = cartItems.map((item: any) => ({
       price_data: {
         currency: "eur",
         product_data: {
@@ -27,7 +27,7 @@ serve(async (req) => {
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
-      success_url: `${req.headers.get("origin")}/order-success?order_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${req.headers.get("origin")}/order-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get("origin")}/menu?payment=cancelled`,
       metadata: {
         user_id,
