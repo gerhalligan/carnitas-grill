@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
-import MenuSection from "@/components/menu/MenuSection";
-import { useMenu } from "@/hooks/use-menu";
+import MenuSection from "@/components/MenuSection";
+import { useMenuItems } from "@/hooks/use-menu-items";
 import Navbar from "@/components/Navbar";
+import MenuSectionLoading from "@/components/menu/MenuSectionLoading";
 
 const Menu = () => {
-  const { data: menu, isLoading } = useMenu();
+  const { data: menuItems, isLoading } = useMenuItems();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const Menu = () => {
         <Navbar />
         <div className="container mx-auto px-4 py-8">
           <h1 className="menu-title text-center mb-12">Our Menu</h1>
-          <MenuSection.Loading />
+          <MenuSectionLoading />
         </div>
       </div>
     );
@@ -35,9 +36,7 @@ const Menu = () => {
       <Navbar />
       <div className="container mx-auto px-4 py-8">
         <h1 className="menu-title text-center mb-12">Our Menu</h1>
-        {menu?.map((section) => (
-          <MenuSection key={section.name} section={section} />
-        ))}
+        <MenuSection />
       </div>
     </div>
   );
