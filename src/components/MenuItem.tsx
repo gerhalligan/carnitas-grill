@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Card, CardFooter } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { MenuCategory } from "@/types/database.types";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import MenuItemDetails from "./menu/MenuItemDetails";
-import MenuItemActions from "./menu/MenuItemActions";
 import { Plus } from "lucide-react";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import CustomizeDialog from "./menu/CustomizeDialog";
@@ -77,7 +76,7 @@ const MenuItem = ({
   };
 
   return (
-    <Card className="relative border border-gray-200 rounded-lg overflow-hidden bg-white">
+    <Card className="group relative border border-white/10 rounded-lg overflow-hidden bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
       <div className="flex justify-between p-6">
         <div className="flex-1">
           <MenuItemDetails
@@ -91,12 +90,12 @@ const MenuItem = ({
           <img
             src={image}
             alt={name}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
           />
           <Dialog open={isCustomizing} onOpenChange={setIsCustomizing}>
             <DialogTrigger asChild>
               <button
-                className="absolute -bottom-3 -right-3 w-10 h-10 bg-[#10151b] rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+                className="absolute -bottom-3 -right-3 w-10 h-10 bg-carnitas-primary rounded-full flex items-center justify-center text-white hover:bg-carnitas-secondary transition-colors shadow-lg"
               >
                 <Plus className="w-5 h-5" />
               </button>

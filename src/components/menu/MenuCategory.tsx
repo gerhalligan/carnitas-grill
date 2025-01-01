@@ -17,10 +17,10 @@ interface MenuCategoryProps {
 const MenuCategory = ({ category, items }: MenuCategoryProps) => {
   return (
     <div className="space-y-6">
-      <h4 className="text-xl font-semibold text-white mb-4">
+      <h4 className="text-2xl font-bold text-white mb-6 border-b border-white/20 pb-2">
         {category}
       </h4>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-fr">
         {items.map((item) => (
           <MenuItem
             key={item.id}
