@@ -15,11 +15,17 @@ serve(async (req) => {
   try {
     const { cartItems } = await req.json();
 
-    const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') || '', {
+    // Update to use the correct secret key name
+    const stripeSecretKey = Deno.env.get('stripe_secret_key');
+    if (!stripeSecretKey) {
+      throw new Error('Stripe secret key not found');
+    }
+
+    const stripe = new Stripe(stripeSecretKey, {
       apiVersion: '2023-10-16',
     });
 
-    // Create line items from cart items
+    console.log('Creating line items from cart items...');
     const lineItems = cartItems.map((item: any) => ({
       price_data: {
         currency: 'eur',
