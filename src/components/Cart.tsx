@@ -27,9 +27,12 @@ export const Cart = () => {
 
       if (error) throw error;
 
-      // Redirect to Stripe Checkout
+      // Redirect to Stripe Checkout in the main window
       if (data?.url) {
-        window.location.href = data.url;
+        // Close the cart sheet before redirecting
+        setIsOpen(false);
+        // Use window.location.href for top-level navigation
+        window.top.location.href = data.url;
       }
     } catch (error) {
       console.error('Error creating checkout session:', error);
