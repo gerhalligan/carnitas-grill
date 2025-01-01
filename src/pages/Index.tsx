@@ -6,8 +6,26 @@ import Footer from "@/components/Footer";
 import LocationMap from "@/components/LocationMap";
 import { Card } from "@/components/ui/card";
 import { MapPin, Phone, Clock } from "lucide-react";
+import { useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 
 const Index = () => {
+  useEffect(() => {
+    // Initialize Supabase client and handle any potential connection issues
+    const initializeSupabase = async () => {
+      try {
+        const { data, error } = await supabase.from('locations').select('*');
+        if (error) {
+          console.error('Error fetching locations:', error.message);
+        }
+      } catch (error) {
+        console.error('Supabase initialization error:', error);
+      }
+    };
+
+    initializeSupabase();
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-carnitas-light">
       <Navbar />
