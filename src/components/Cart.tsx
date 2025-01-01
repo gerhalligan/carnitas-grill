@@ -10,10 +10,34 @@ import { ShoppingCart, Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { supabase } from "@/lib/supabase";
+import { toast } from "sonner";
 
 export const Cart = () => {
   const { items, removeItem, updateQuantity, clearCart, total } = useCart();
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    try {
+      setIsLoading(true);
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
+        body: { cartItems: items },
+      });
+
+      if (error) throw error;
+
+      // Redirect to Stripe Checkout
+      if (data?.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
+      toast.error('Failed to create checkout session. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -101,8 +125,12 @@ export const Cart = () => {
                   <span>€{total.toFixed(2)}</span>
                 </div>
                 <div className="mt-6 space-y-2">
-                  <Button className="w-full sketch-button">
-                    Checkout
+                  <Button 
+                    className="w-full sketch-button"
+                    onClick={handleCheckout}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Processing...' : 'Checkout'}
                   </Button>
                   <Button
                     variant="outline"
