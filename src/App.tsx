@@ -3,7 +3,7 @@ import Index from "@/pages/Index";
 import Menu from "@/pages/Menu";
 import Auth from "@/pages/Auth";
 import OrderSuccess from "@/pages/OrderSuccess";
-import { Toaster } from "@/components/ui/toast"; // Assuming you have a Toaster component for notifications
+import { Toaster } from "@/components/ui/toaster";
 
 const App = () => {
   return (
