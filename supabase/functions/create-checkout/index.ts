@@ -15,13 +15,7 @@ serve(async (req) => {
   try {
     const { cartItems } = await req.json();
 
-    // Update to use the correct secret key name
-    const stripeSecretKey = Deno.env.get('stripe_secret_key');
-    if (!stripeSecretKey) {
-      throw new Error('Stripe secret key not found');
-    }
-
-    const stripe = new Stripe(stripeSecretKey, {
+    const stripe = new Stripe(Deno.env.get('stripe_secret_key') || '', {
       apiVersion: '2023-10-16',
     });
 
@@ -46,8 +40,8 @@ serve(async (req) => {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${req.headers.get('origin')}/order-success`,
-      cancel_url: `${req.headers.get('origin')}/menu`,
+      success_url: `${req.headers.get('origin')}/menu?payment=success`,
+      cancel_url: `${req.headers.get('origin')}/menu?payment=cancelled`,
     });
 
     console.log('Checkout session created:', session.id);

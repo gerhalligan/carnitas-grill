@@ -1,81 +1,44 @@
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { toast } from "sonner";
+import MenuSection from "@/components/menu/MenuSection";
+import { useMenu } from "@/hooks/use-menu";
 import Navbar from "@/components/Navbar";
-import MenuSection from "@/components/MenuSection";
-import { MenuManagement } from "@/components/MenuManagement";
-import Footer from "@/components/Footer";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/lib/supabase";
-import { useAuth } from "@/contexts/AuthContext";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import OrderHistory from "@/components/OrderHistory";
-import { VouchersDisplay } from "@/components/menu/VouchersDisplay";
 
 const Menu = () => {
-  const { user } = useAuth();
-  const { data: profile } = useQuery({
-    queryKey: ["profile", user?.id],
-    queryFn: async () => {
-      if (!user?.id) return null;
-      const { data, error } = await supabase
-        .from("user_profiles")
-        .select("*")
-        .eq("user_id", user.id)
-        .maybeSingle();
-        
-      if (error && error.code !== 'PGRST116') {
-        console.error("Error fetching profile:", error);
-        throw error;
-      }
-      
-      return data;
-    },
-    enabled: !!user?.id,
-  });
+  const { data: menu, isLoading } = useMenu();
+  const [searchParams] = useSearchParams();
 
-  const isStaff = profile?.role === 'admin' || profile?.role === 'manager';
+  useEffect(() => {
+    const payment = searchParams.get('payment');
+    if (payment === 'success') {
+      toast.success('Payment successful! Your order has been placed.');
+    } else if (payment === 'cancelled') {
+      toast.error('Payment was cancelled.');
+    }
+  }, [searchParams]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-carnitas-light">
+        <Navbar />
+        <div className="container mx-auto px-4 py-8">
+          <h1 className="menu-title text-center mb-12">Our Menu</h1>
+          <MenuSection.Loading />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-carnitas-light">
       <Navbar />
-      <div className="flex-grow">
-        {user && isStaff ? (
-          <Tabs defaultValue="menu" className="w-full pt-48">
-            <div className="container mx-auto px-4">
-              <TabsList className="mb-8">
-                <TabsTrigger value="menu">Menu</TabsTrigger>
-                <TabsTrigger value="management">Menu Management</TabsTrigger>
-              </TabsList>
-              <TabsContent value="menu">
-                <MenuSection />
-              </TabsContent>
-              <TabsContent value="management">
-                <MenuManagement />
-              </TabsContent>
-            </div>
-          </Tabs>
-        ) : user ? (
-          <Tabs defaultValue="menu" className="w-full pt-48">
-            <div className="container mx-auto px-4">
-              <TabsList className="mb-8">
-                <TabsTrigger value="menu">Menu</TabsTrigger>
-                <TabsTrigger value="orders">Order History</TabsTrigger>
-                <TabsTrigger value="rewards">Rewards</TabsTrigger>
-              </TabsList>
-              <TabsContent value="menu">
-                <MenuSection />
-              </TabsContent>
-              <TabsContent value="orders">
-                <OrderHistory />
-              </TabsContent>
-              <TabsContent value="rewards">
-                <VouchersDisplay />
-              </TabsContent>
-            </div>
-          </Tabs>
-        ) : (
-          <MenuSection />
-        )}
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="menu-title text-center mb-12">Our Menu</h1>
+        {menu?.map((section) => (
+          <MenuSection key={section.name} section={section} />
+        ))}
       </div>
-      <Footer />
     </div>
   );
 };
