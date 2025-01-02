@@ -127,6 +127,7 @@ export type Database = {
           items: Json
           pickup_time: string | null
           status: string
+          stripe_session_id: string | null
           total: number
           user_id: string | null
         }
@@ -136,6 +137,7 @@ export type Database = {
           items: Json
           pickup_time?: string | null
           status?: string
+          stripe_session_id?: string | null
           total: number
           user_id?: string | null
         }
@@ -145,6 +147,7 @@ export type Database = {
           items?: Json
           pickup_time?: string | null
           status?: string
+          stripe_session_id?: string | null
           total?: number
           user_id?: string | null
         }

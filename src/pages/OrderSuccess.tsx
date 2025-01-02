@@ -21,19 +21,35 @@ const OrderSuccess = () => {
     }
 
     const fetchOrder = async () => {
-      const { data, error } = await supabase
-        .from('orders')
-        .select('*')
-        .eq('id', orderId)
-        .single();
+      try {
+        const { data, error } = await supabase
+          .from('orders')
+          .select('*')
+          .eq('id', orderId)
+          .single();
 
-      if (error || !data) {
+        if (error || !data) {
+          console.error('Error fetching order:', error);
+          navigate('/menu');
+          return;
+        }
+
+        // Update order status to completed
+        const { error: updateError } = await supabase
+          .from('orders')
+          .update({ status: 'completed' })
+          .eq('id', orderId);
+
+        if (updateError) {
+          console.error('Error updating order status:', updateError);
+        }
+
+        setOrder(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error in fetchOrder:', error);
         navigate('/menu');
-        return;
       }
-
-      setOrder(data);
-      setLoading(false);
     };
 
     fetchOrder();
