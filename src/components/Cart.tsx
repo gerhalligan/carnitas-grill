@@ -29,7 +29,10 @@ export const Cart = () => {
     try {
       setIsLoading(true);
       const { data, error } = await supabase.functions.invoke('create-checkout', {
-        body: { cartItems: items },
+        body: { 
+          cartItems: items,
+          origin: window.location.origin // Add origin to the request
+        },
       });
 
       if (error) throw error;
