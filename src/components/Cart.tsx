@@ -12,13 +12,20 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const Cart = () => {
   const { items, removeItem, updateQuantity, clearCart, total } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { session } = useAuth();
 
   const handleCheckout = async () => {
+    if (!session) {
+      toast.error('Please log in to checkout');
+      return;
+    }
+
     try {
       setIsLoading(true);
       const { data, error } = await supabase.functions.invoke('create-checkout', {
