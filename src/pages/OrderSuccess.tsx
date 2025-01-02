@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { VouchersDisplay } from "@/components/menu/VouchersDisplay";
 import Navbar from "@/components/Navbar";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 const OrderSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -15,7 +16,9 @@ const OrderSuccess = () => {
 
   useEffect(() => {
     const orderId = searchParams.get('order_id');
+    
     if (!orderId) {
+      toast.error("No order ID found");
       navigate('/menu');
       return;
     }
@@ -28,8 +31,16 @@ const OrderSuccess = () => {
           .eq('id', orderId)
           .single();
 
-        if (error || !data) {
+        if (error) {
           console.error('Error fetching order:', error);
+          toast.error("Error fetching order details");
+          navigate('/menu');
+          return;
+        }
+
+        if (!data) {
+          console.error('No order found');
+          toast.error("Order not found");
           navigate('/menu');
           return;
         }
@@ -42,12 +53,15 @@ const OrderSuccess = () => {
 
         if (updateError) {
           console.error('Error updating order status:', updateError);
+          // Don't navigate away, just show a warning
+          toast.warning("Could not update order status");
         }
 
         setOrder(data);
         setLoading(false);
       } catch (error) {
         console.error('Error in fetchOrder:', error);
+        toast.error("An unexpected error occurred");
         navigate('/menu');
       }
     };
@@ -59,7 +73,7 @@ const OrderSuccess = () => {
     return (
       <div className="min-h-screen bg-black">
         <Navbar />
-        <div className="container mx-auto px-4 py-8 flex justify-center items-center">
+        <div className="container mx-auto px-4 py-8 flex justify-center items-center min-h-[60vh]">
           <Loader2 className="h-8 w-8 animate-spin text-white" />
         </div>
       </div>
