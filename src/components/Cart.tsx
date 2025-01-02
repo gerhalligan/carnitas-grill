@@ -28,21 +28,29 @@ export const Cart = () => {
 
     try {
       setIsLoading(true);
+      console.log('Starting checkout with items:', items);
+      
       const { data, error } = await supabase.functions.invoke('create-checkout', {
         body: { cartItems: items },
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Checkout error:', error);
+        throw error;
+      }
+
+      console.log('Checkout response:', data);
 
       // Redirect to Stripe Checkout
       if (data?.url) {
-        // Close the cart sheet before redirecting
+        window.location.href = data.url;
+        // Close the cart sheet and clear it only after successful redirect
         setIsOpen(false);
         clearCart();
-        // Use window.location.href for top-level navigation
-        window.location.href = data.url;
+      } else {
+        throw new Error('No checkout URL received');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error creating checkout session:', error);
       toast.error('Failed to create checkout session. Please try again.');
     } finally {
