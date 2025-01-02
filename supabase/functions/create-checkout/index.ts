@@ -1,94 +1,118 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { stripe } from "../_utils/stripe.ts";
-import { corsHeaders } from "../_utils/cors.ts";
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.38.4'
+import Stripe from 'https://esm.sh/stripe@13.10.0?target=deno'
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
 
 serve(async (req) => {
-  if (req.method === "OPTIONS") {
-    return new Response("ok", { headers: corsHeaders });
+  // Handle CORS preflight requests
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders })
   }
 
   try {
-    const { cartItems, user_id } = await req.json();
+    const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') || '', {
+      apiVersion: '2023-10-16',
+      httpClient: Stripe.createFetchHttpClient(),
+    })
 
-    const lineItems = cartItems.map((item: any) => ({
-      price_data: {
-        currency: "eur",
-        product_data: {
-          name: item.name,
-          description: item.customizations ? 
-            `Notes: ${item.customizations.notes || 'None'}, Removed: ${item.customizations.removedIngredients?.join(', ') || 'None'}` : 
-            undefined,
+    const supabaseClient = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      {
+        global: {
+          headers: { Authorization: req.headers.get('Authorization')! },
         },
-        unit_amount: Math.round(item.price * 100),
-      },
-      quantity: item.quantity,
-    }));
+      }
+    )
 
-    // Create order first
-    const orderData = {
-      user_id,
-      items: cartItems,
-      total: cartItems.reduce((sum: number, item: any) => sum + (item.price * item.quantity), 0),
-      status: 'pending'
-    };
+    const { data: { user } } = await supabaseClient.auth.getUser()
 
-    const orderResponse = await fetch(`${Deno.env.get('SUPABASE_URL')}/rest/v1/orders`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`,
-        'apikey': Deno.env.get('SUPABASE_ANON_KEY') || '',
-        'Prefer': 'return=representation'
-      },
-      body: JSON.stringify(orderData)
-    });
-
-    if (!orderResponse.ok) {
-      throw new Error('Failed to create order');
+    if (!user) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        { 
+          status: 401,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      )
     }
 
-    const order = await orderResponse.json();
-    const orderId = order[0].id;
+    const { cartItems } = await req.json()
+
+    // Create the order first
+    const { data: order, error: orderError } = await supabaseClient
+      .from('orders')
+      .insert({
+        user_id: user.id,
+        items: cartItems,
+        total: cartItems.reduce((sum: number, item: any) => sum + (item.price * item.quantity), 0),
+        status: 'pending'
+      })
+      .select()
+      .single()
+
+    if (orderError || !order) {
+      console.error('Error creating order:', orderError)
+      throw new Error('Failed to create order')
+    }
+
+    // Get the domain from the request origin or use a default
+    const origin = req.headers.get('origin') || 'http://localhost:5173'
+    console.log('Origin:', origin)
+    console.log('Order ID:', order.id)
 
     const session = await stripe.checkout.sessions.create({
-      line_items: lineItems,
-      mode: "payment",
-      success_url: `${req.headers.get("origin")}/order-success?order_id=${orderId}`,
-      cancel_url: `${req.headers.get("origin")}/menu?payment=cancelled`,
+      payment_method_types: ['card'],
+      line_items: cartItems.map((item: any) => ({
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: item.name,
+            description: item.description || undefined,
+          },
+          unit_amount: Math.round(item.price * 100),
+        },
+        quantity: item.quantity,
+      })),
+      mode: 'payment',
+      success_url: `${origin}/order-success?order_id=${order.id}`,
+      cancel_url: `${origin}/menu?payment=cancelled`,
       metadata: {
-        user_id,
-        order_id: orderId
-      },
-    });
+        order_id: order.id,
+        user_id: user.id
+      }
+    })
 
-    // Update order with Stripe session ID
-    await fetch(`${Deno.env.get('SUPABASE_URL')}/rest/v1/orders?id=eq.${orderId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`,
-        'apikey': Deno.env.get('SUPABASE_ANON_KEY') || '',
-      },
-      body: JSON.stringify({
-        stripe_session_id: session.id
-      })
-    });
+    // Update the order with the Stripe session ID
+    const { error: updateError } = await supabaseClient
+      .from('orders')
+      .update({ stripe_session_id: session.id })
+      .eq('id', order.id)
+
+    if (updateError) {
+      console.error('Error updating order with Stripe session ID:', updateError)
+      // Continue anyway as this is not critical
+    }
 
     return new Response(
       JSON.stringify({ url: session.url }),
-      {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      { 
         status: 200,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       }
-    );
+    )
   } catch (error) {
-    console.error("Error creating checkout session:", error);
+    console.error('Error:', error)
     return new Response(
       JSON.stringify({ error: error.message }),
-      {
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-        status: 500,
+      { 
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       }
-    );
+    )
   }
-});
+})
