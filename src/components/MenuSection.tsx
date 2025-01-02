@@ -24,7 +24,7 @@ const MenuSection = () => {
     return (
       <section className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-8">
+          <h2 className="text-4xl font-bold text-center text-white mb-8">
             Our Menu
           </h2>
           <MenuSectionLoading />
@@ -37,7 +37,7 @@ const MenuSection = () => {
     <section className="py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {user && <VouchersDisplay />}
-        <h2 className="menu-title text-center mb-12">
+        <h2 className="menu-title text-center mb-12 text-white">
           Our Menu
         </h2>
         

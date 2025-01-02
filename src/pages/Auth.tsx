@@ -58,7 +58,7 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black">
       <Navbar />
       <div className="max-w-md mx-auto pt-32 md:pt-48 px-4">
         <div className="bg-white p-8 rounded-lg shadow-md">

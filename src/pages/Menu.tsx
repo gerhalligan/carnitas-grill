@@ -21,10 +21,10 @@ const Menu = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-black">
         <Navbar />
         <div className="container mx-auto px-4 py-8 pt-32">
-          <h1 className="menu-title text-center mb-12">Our Menu</h1>
+          <h1 className="menu-title text-center mb-12 text-white">Our Menu</h1>
           <MenuSectionLoading />
         </div>
       </div>
@@ -32,7 +32,7 @@ const Menu = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <Navbar />
       <div className="container mx-auto px-4 py-8 pt-32">
         <MenuSection />
