@@ -14,11 +14,13 @@ serve(async (req) => {
   }
 
   try {
+    // Initialize Stripe
     const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') || '', {
       apiVersion: '2023-10-16',
       httpClient: Stripe.createFetchHttpClient(),
     })
 
+    // Initialize Supabase client
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_ANON_KEY') ?? '',
@@ -29,9 +31,11 @@ serve(async (req) => {
       }
     )
 
-    const { data: { user } } = await supabaseClient.auth.getUser()
+    // Get the authenticated user
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser()
 
-    if (!user) {
+    if (authError || !user) {
+      console.error('Auth error:', authError)
       return new Response(
         JSON.stringify({ error: 'Unauthorized' }),
         { 
@@ -41,7 +45,22 @@ serve(async (req) => {
       )
     }
 
+    // Get cart items from request body
     const { cartItems } = await req.json()
+    console.log('Received cart items:', cartItems)
+
+    if (!cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid cart items' }),
+        { 
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      )
+    }
+
+    // Calculate total
+    const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
     // Create the order first
     const { data: order, error: orderError } = await supabaseClient
@@ -49,7 +68,7 @@ serve(async (req) => {
       .insert({
         user_id: user.id,
         items: cartItems,
-        total: cartItems.reduce((sum: number, item: any) => sum + (item.price * item.quantity), 0),
+        total: total,
         status: 'pending'
       })
       .select()
@@ -60,21 +79,23 @@ serve(async (req) => {
       throw new Error('Failed to create order')
     }
 
-    // Get the domain from the request origin or use a default
-    const origin = req.headers.get('origin') || 'http://localhost:5173'
-    console.log('Origin:', origin)
-    console.log('Order ID:', order.id)
+    console.log('Created order:', order)
 
+    // Get the domain from the request origin or use the deployed URL
+    const origin = req.headers.get('origin') || 'https://carnitas-grill-v2.netlify.app'
+    console.log('Using origin:', origin)
+
+    // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: cartItems.map((item: any) => ({
+      line_items: cartItems.map((item) => ({
         price_data: {
           currency: 'eur',
           product_data: {
             name: item.name,
             description: item.description || undefined,
           },
-          unit_amount: Math.round(item.price * 100),
+          unit_amount: Math.round(item.price * 100), // Convert to cents
         },
         quantity: item.quantity,
       })),
@@ -86,6 +107,8 @@ serve(async (req) => {
         user_id: user.id
       }
     })
+
+    console.log('Created Stripe session:', session.id)
 
     // Update the order with the Stripe session ID
     const { error: updateError } = await supabaseClient
