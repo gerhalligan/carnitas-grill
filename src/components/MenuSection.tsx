@@ -22,9 +22,9 @@ const MenuSection = () => {
 
   if (isLoading) {
     return (
-      <section className="pt-24 pb-24 bg-mexican-pattern bg-fixed bg-cover bg-center min-h-screen relative before:content-[''] before:absolute before:inset-0 before:bg-white before:opacity-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-          <h2 className="text-4xl font-bold text-center text-white mb-8">
+      <section className="py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-8">
             Our Menu
           </h2>
           <MenuSectionLoading />
@@ -34,10 +34,10 @@ const MenuSection = () => {
   }
 
   return (
-    <section className="pt-24 pb-24 bg-mexican-pattern bg-fixed bg-cover bg-center min-h-screen relative before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b from-white/50 to-white/70">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-black/80 backdrop-blur-sm rounded-lg shadow-2xl relative z-10">
+    <section className="py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {user && <VouchersDisplay />}
-        <h2 className="menu-title text-center mb-12 text-white">
+        <h2 className="menu-title text-center mb-12">
           Our Menu
         </h2>
         

@@ -21,9 +21,9 @@ const Menu = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-carnitas-light pt-32">
+      <div className="min-h-screen bg-white">
         <Navbar />
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 pt-32">
           <h1 className="menu-title text-center mb-12">Our Menu</h1>
           <MenuSectionLoading />
         </div>
@@ -32,10 +32,9 @@ const Menu = () => {
   }
 
   return (
-    <div className="min-h-screen bg-carnitas-light pt-32">
+    <div className="min-h-screen bg-white">
       <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="menu-title text-center mb-12">Our Menu</h1>
+      <div className="container mx-auto px-4 py-8 pt-32">
         <MenuSection />
       </div>
     </div>
