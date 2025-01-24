@@ -4,6 +4,7 @@ import Index from "@/pages/Index";
 import Menu from "@/pages/Menu";
 import Auth from "@/pages/Auth";
 import OrderSuccess from "@/pages/OrderSuccess";
+import MenuDisplays from "@/pages/MenuDisplays";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { CartProvider } from "@/contexts/CartContext";
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/menu" element={<Menu />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/order-success" element={<OrderSuccess />} />
+              <Route path="/menu-displays" element={<MenuDisplays />} />
             </Routes>
             <Toaster />
           </Router>
