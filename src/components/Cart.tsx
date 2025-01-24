@@ -30,7 +30,10 @@ export const Cart = () => {
       setIsLoading(true);
       console.log('Creating checkout session...');
       const { data, error } = await supabase.functions.invoke('create-checkout', {
-        body: { cartItems: items },
+        body: { 
+          cartItems: items,
+          origin: window.location.origin 
+        },
       });
 
       if (error) {

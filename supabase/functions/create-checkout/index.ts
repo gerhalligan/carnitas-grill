@@ -45,9 +45,10 @@ serve(async (req) => {
       )
     }
 
-    // Get cart items from request body
-    const { cartItems } = await req.json()
+    // Get cart items and origin from request body
+    const { cartItems, origin } = await req.json()
     console.log('Received cart items:', cartItems)
+    console.log('Origin:', origin)
 
     if (!cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
       return new Response(
@@ -59,8 +60,18 @@ serve(async (req) => {
       )
     }
 
+    if (!origin) {
+      return new Response(
+        JSON.stringify({ error: 'Origin URL is required' }),
+        { 
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      )
+    }
+
     // Calculate total
-    const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+    const total = cartItems.reduce((sum: number, item: any) => sum + (item.price * item.quantity), 0)
 
     // Create the order first
     const { data: order, error: orderError } = await supabaseClient
@@ -81,14 +92,10 @@ serve(async (req) => {
 
     console.log('Created order:', order)
 
-    // Get the domain from the request origin or use the deployed URL
-    const origin = req.headers.get('origin') || 'https://carnitas-grill-v2.netlify.app'
-    console.log('Using origin:', origin)
-
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: cartItems.map((item) => ({
+      line_items: cartItems.map((item: any) => ({
         price_data: {
           currency: 'eur',
           product_data: {
