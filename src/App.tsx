@@ -1,42 +1,41 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createBrowserRouter } from "react-router-dom";
 import Index from "@/pages/Index";
 import Menu from "@/pages/Menu";
 import Auth from "@/pages/Auth";
 import OrderSuccess from "@/pages/OrderSuccess";
-import MenuDisplays from "@/pages/MenuDisplays";
-import { Toaster } from "@/components/ui/toaster";
-import { AuthProvider } from "@/contexts/AuthContext";
-import { CartProvider } from "@/contexts/CartContext";
+import StartersMenuDisplay from "@/pages/StartersMenuDisplay";
+import MainsMenuDisplay from "@/pages/MainsMenuDisplay";
+import SidesMenuDisplay from "@/pages/SidesMenuDisplay";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      retry: 1,
-    },
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Index />,
   },
-});
+  {
+    path: "/menu",
+    element: <Menu />,
+  },
+  {
+    path: "/auth",
+    element: <Auth />,
+  },
+  {
+    path: "/order-success",
+    element: <OrderSuccess />,
+  },
+  {
+    path: "/starters-menu",
+    element: <StartersMenuDisplay />,
+  },
+  {
+    path: "/mains-menu",
+    element: <MainsMenuDisplay />,
+  },
+  {
+    path: "/sides-menu",
+    element: <SidesMenuDisplay />,
+  },
+]);
 
-const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <CartProvider>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/order-success" element={<OrderSuccess />} />
-              <Route path="/menu-displays" element={<MenuDisplays />} />
-            </Routes>
-            <Toaster />
-          </Router>
-        </CartProvider>
-      </AuthProvider>
-    </QueryClientProvider>
-  );
-};
-
-export default App;
+export default router;
