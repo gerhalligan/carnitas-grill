@@ -6,11 +6,13 @@ import OrderSuccess from "@/pages/OrderSuccess";
 import StartersMenuDisplay from "@/pages/StartersMenuDisplay";
 import MainsMenuDisplay from "@/pages/MainsMenuDisplay";
 import SidesMenuDisplay from "@/pages/SidesMenuDisplay";
+import NotFound from "@/pages/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Index />,
+    errorElement: <NotFound />,
   },
   {
     path: "/menu",
