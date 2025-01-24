@@ -4,6 +4,12 @@ const SidesMenuDisplay = () => {
   return (
     <div className="min-h-screen bg-carnitas-light p-8">
       <Card className="bg-white/90 backdrop-blur-sm border-2 border-carnitas-primary p-8 shadow-2xl">
+        <img 
+          src="/lovable-uploads/fc3bbdbb-3866-4c14-ab0c-f85f7df73e1c.png" 
+          alt="Carnitas Logo" 
+          className="w-48 mx-auto mb-8"
+        />
+        
         <div className="grid grid-cols-2 gap-12">
           <div>
             <h2 className="menu-title mb-6">Mexican Sides</h2>

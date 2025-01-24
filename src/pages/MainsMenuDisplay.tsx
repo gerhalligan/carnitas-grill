@@ -4,6 +4,12 @@ const MainsMenuDisplay = () => {
   return (
     <div className="min-h-screen bg-carnitas-light p-8">
       <Card className="bg-white/90 backdrop-blur-sm border-2 border-carnitas-primary p-8 shadow-2xl">
+        <img 
+          src="/lovable-uploads/fc3bbdbb-3866-4c14-ab0c-f85f7df73e1c.png" 
+          alt="Carnitas Logo" 
+          className="w-48 mx-auto mb-8"
+        />
+        
         <h1 className="menu-title text-center mb-4">Mexican Mains</h1>
         <p className="text-3xl text-center text-carnitas-text mb-8 font-display">(Inc salsa pot)</p>
         <p className="text-5xl text-center text-carnitas-primary mb-12 font-display">€12.80</p>
